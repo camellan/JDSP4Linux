@@ -10,8 +10,10 @@
 class AeqItemDelegate :
         public QStyledItemDelegate
 {
+    Q_OBJECT
 public:
-    AeqItemDelegate(QObject *parent = 0) : QStyledItemDelegate(parent) {}
+    explicit AeqItemDelegate(QObject *parent = nullptr) : QStyledItemDelegate(parent) {}
+    ~AeqItemDelegate(){}
 
     QSize sizeHint(const QStyleOptionViewItem &option,
                    const QModelIndex          &index) const override
@@ -41,13 +43,13 @@ public:
             best = "";
             break;
         case 2:
-            best = "2nd choice";
+            best = tr("2nd choice");
             break;
         case 3:
-            best = "3rd choice";
+            best = tr("3rd choice");
             break;
         default:
-            best = QString("%1th choice").arg(item.rank);
+            best = tr("%1th choice").arg(item.rank);
             break;
         }
         auto bestWidth = painter->fontMetrics().horizontalAdvance(best);

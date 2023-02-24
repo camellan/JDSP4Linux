@@ -27,6 +27,7 @@ public:
     bool start(QNetworkReply* reply, QDir _extractionPath);
     void abort();
     bool isActive();
+    QNetworkAccessManager* getManager();
 
 signals:
     void downloadProgressUpdated(qint64 bytesReceived, qint64 bytesTotal);
@@ -46,8 +47,8 @@ private:
     QDir extractionPath;
     QFile downloadedFile;
     QNetworkAccessManager* nam;
-    QPointer<QNetworkReply> networkReply;
-    ExtractionThread *extractThread;
+    QPointer<QNetworkReply> networkReply = nullptr;
+    ExtractionThread *extractThread = nullptr;
 };
 
 

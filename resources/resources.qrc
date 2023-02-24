@@ -64,6 +64,9 @@
         <file>assets/vdc/mh750.vdc</file>
         <file>assets/liveprog/pfb.eel</file>
         <file>assets/liveprog/stftDenoise.eel</file>
-        <file>../translations.qrc</file>
+        <file>translations/jamesdsp_de.qm</file>
+        <file>translations/jamesdsp_en.qm</file>
+        <file>translations/jamesdsp_ru.qm</file>
+        <file>translations/jamesdsp_br.qm</file>
     </qresource>
 </RCC>

@@ -36,6 +36,14 @@ Linux port developed by <a href="https://github.com/thepbone">Tim Schneeberger (
     Feel free to join our <a href="https://t.me/joinchat/FTKC2A2bolHkFAyO-fuPjw">Telegram group</a> for support and updates
 </p>
 
+____________
+
+<p align="center">
+    <a href="https://crowdin.com/project/jdsp4linux" rel="nofollow"><img style="width:140;height:40px" src="https://badges.crowdin.net/badge/light/crowdin-on-dark.png" srcset="https://badges.crowdin.net/badge/light/crowdin-on-dark.png 1x,https://badges.crowdin.net/badge/light/crowdin-on-dark@2x.png 2x" alt="Crowdin" /></a>
+    <br/>
+    Please help us to <a href="https://crowdin.com/project/jdsp4linux">translate this app</a> on <a href="https://crowdin.com/project/jdsp4linux">Crowdin</a>!
+</p>
+
 ## Features
 
 * Automatic bass boost
@@ -342,9 +350,37 @@ sudo wget -O /usr/share/pixmaps/jamesdsp.png https://raw.githubusercontent.com/A
 * [James Fung](https://github.com/james34602) - Developer of the core library ['libjamesdsp'](https://github.com/james34602/JamesDSPManager/tree/master/Main)
 * [yochananmarqos](https://github.com/yochananmarqos) - AUR packages
 * [theAeon](https://github.com/theAeon) - RPM packages
-
-##### Other credits
 * PipeWire/Pulse implementation based on [EasyEffects](https://github.com/wwmm/EasyEffects)
+
+### Translators
+
+<!-- CROWDIN-CONTRIBUTORS-START -->
+<table>
+  <tr>
+    <td align="center" valign="top">
+      <a href="https://crowdin.com/profile/ThePBone"><img alt="logo" style="width: 64px" src="https://crowdin-static.downloads.crowdin.com/avatar/15683553/medium/d13428d1e0922bc2069500aef57d1459.png" />
+        <br />
+        <sub><b>Tim Schneeberger (ThePBone)</b></sub></a>
+      <br />
+      <sub><b>6708 words</b></sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://crowdin.com/profile/Kazevic"><img alt="logo" style="width: 64px" src="https://crowdin-static.downloads.crowdin.com/avatar/15680393/medium/4393ae8969da30fc9475409e95e74867.png" />
+        <br />
+        <sub><b>Kazevic</b></sub></a>
+      <br />
+      <sub><b>2677 words</b></sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://crowdin.com/profile/Camellan"><img alt="logo" style="width: 64px" src="https://crowdin-static.downloads.crowdin.com/avatar/13410766/medium/b4019516b3323e817b7e77712961de69_default.png" />
+        <br />
+        <sub><b>Camellan</b></sub></a>
+      <br />
+      <sub><b>1670 words</b></sub>
+    </td>
+  </tr>
+</table><a href="https://crowdin.com/project/jdsp4linux" target="_blank">Translate in Crowdin 🚀</a>
+<!-- CROWDIN-CONTRIBUTORS-END -->
 
 ## License
 

@@ -18,7 +18,7 @@ NO_CRASH_HANDLER: DEFINES += NO_CRASH_HANDLER
 }
 
 DEFINES += APP_VERSION=$$system(git describe --tags --long --always)
-DEFINES += JDSP_VERSION=4.1.1
+DEFINES += JDSP_VERSION=3.12
 
 include(../3rdparty/3rdparty.pri)
 
@@ -38,8 +38,8 @@ include(subprojects/EELEditor/src/EELEditor.pri)
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
 
-QMAKE_CFLAGS += "-Wno-unused-variable -Wno-unused-function -Wno-unused-parameter -Wno-unused-const-variable"
-QMAKE_CXXFLAGS += "-Wno-missing-field-initializers -Wno-unused-variable -Wno-unused-function -Wno-unused-parameter -Wno-unused-const-variable"
+QMAKE_CFLAGS += "-Wno-unused-variable -Wno-unused-function -Wno-unused-const-variable"
+QMAKE_CXXFLAGS += "-Wno-deprecated-enum-enum-conversion -Wno-missing-field-initializers -Wno-unused-function -Wno-unused-parameter"
 
 CONFIG += c++2a
 
@@ -180,7 +180,11 @@ DISTFILES += utils/dbus/manifest.xml
 
 RESOURCES += \
     ../resources/resources.qrc
-    ../translations.qrc
+
+TRANSLATIONS += ../resources/translations/jamesdsp_de.ts \
+                ../resources/translations/jamesdsp_en.ts \
+                ../resources/translations/jamesdsp_ru.ts \
+                ../resources/translations/jamesdsp_br.ts
 
 # Default rules for deployment.
 isEmpty(PREFIX){

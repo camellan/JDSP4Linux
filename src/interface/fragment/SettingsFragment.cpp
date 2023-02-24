@@ -39,8 +39,8 @@ SettingsFragment::SettingsFragment(TrayIcon *trayIcon,
 	ui->setupUi(this);
 
 #ifdef USE_PULSEAUDIO
+    ui->selector->topLevelItem(2)->setHidden(true); // Hide devices
     ui->devices->setVisible(false);
-    ui->selector->findItems("Devices", Qt::MatchFlag::MatchExactly).first()->setHidden(true);
     ui->blocklistBox->setVisible(false);
 #endif
 
@@ -52,7 +52,7 @@ SettingsFragment::SettingsFragment(TrayIcon *trayIcon,
     ui->selector->setCurrentItem(ui->selector->topLevelItem(0));
 	ui->stackedWidget->setCurrentIndex(0);
     ui->stackedWidget->repaint();
-    ui->selector->expandItem(ui->selector->findItems("Tray icon", Qt::MatchFlag::MatchExactly).first());
+    ui->selector->expandItem(ui->selector->topLevelItem(4)); // Expand tray-icon
     connect(ui->selector, &QTreeWidget::currentItemChanged, this, &SettingsFragment::onTreeItemSelected);
 
 	/*
@@ -80,7 +80,6 @@ SettingsFragment::SettingsFragment(TrayIcon *trayIcon,
     connect(ui->systray_r_none, &QRadioButton::clicked, this, &SettingsFragment::onSystrayToggled);
     connect(ui->systray_r_showtray, &QRadioButton::clicked, this, &SettingsFragment::onSystrayToggled);
     connect(ui->systray_minOnBoot, &QPushButton::clicked, this, &SettingsFragment::onAutoStartToggled);
-    connect(ui->systray_delay, &QPushButton::clicked, this, &SettingsFragment::onAutoStartToggled);
     connect(ui->menu_edit, &QMenuEditor::targetChanged, this, &SettingsFragment::onTrayEditorCommitted);
     connect(ui->menu_edit, &QMenuEditor::resetPressed, this, &SettingsFragment::onTrayEditorReset);
     ui->menu_edit->setSourceMenu(trayIcon->buildAvailableActions());
@@ -103,7 +102,6 @@ SettingsFragment::SettingsFragment(TrayIcon *trayIcon,
     /*
      * Network signals
      */
-    connect(ui->crashShareAllow, &QCheckBox::toggled, this, &SettingsFragment::onCrashShareToggled);
     connect(ui->aeqManage, &QPushButton::clicked, this, &SettingsFragment::onAeqDatabaseManageClicked);
 
 	/*
@@ -141,10 +139,6 @@ SettingsFragment::SettingsFragment(TrayIcon *trayIcon,
         ui->session_menu->setEnabled(false);
 #ifndef QT_NO_SYSTEMTRAYICON
 	}
-#endif
-
-#ifdef NO_CRASH_HANDLER
-    ui->crashShareGroup->setVisible(false);
 #endif
 }
 
@@ -198,9 +192,8 @@ void SettingsFragment::refreshDevices()
 void SettingsFragment::refreshAll()
 {
     _lockslot = true;
-	QString autostart_path = AutostartManager::getAutostartPath("jdsp-gui.desktop");
 
-	ui->menu_edit->setTargetMenu(_trayIcon->getTrayMenu());
+    ui->menu_edit->setTargetMenu(_trayIcon->getTrayMenu());
 	ui->irspath->setText(AppConfig::instance().getIrsPath());
     ui->ddcpath->setText(AppConfig::instance().getVdcPath());
 	ui->liveprog_path->setText(AppConfig::instance().getLiveprogPath());
@@ -239,18 +232,13 @@ void SettingsFragment::refreshAll()
     ui->systray_icon_box->setEnabled(AppConfig::instance().get<bool>(AppConfig::TrayIconEnabled));
     ui->menu_edit->setEnabled(AppConfig::instance().get<bool>(AppConfig::TrayIconEnabled));
 
-    bool autostartEnabled = AutostartManager::inspectDesktopFile(autostart_path, AutostartManager::Exists);
-    ui->systray_minOnBoot->setChecked(autostartEnabled);
-    ui->systray_delay->setEnabled(autostartEnabled);
-    ui->systray_delay->setChecked(AutostartManager::inspectDesktopFile(autostart_path, AutostartManager::Delayed));
+    ui->systray_minOnBoot->setChecked(AutostartManager::isEnabled());
 
     ui->eq_alwaysdrawhandles->setChecked(AppConfig::instance().get<bool>(AppConfig::EqualizerShowHandles));
 
     ui->blocklistInvert->blockSignals(true);
     ui->blocklistInvert->setChecked(AppConfig::instance().get<bool>(AppConfig::AudioAppBlocklistInvert));
     ui->blocklistInvert->blockSignals(false);
-
-    ui->crashShareAllow->setChecked(AppConfig::instance().get<bool>(AppConfig::SendCrashReports));
 
     ui->aeqStatus->setText(AeqPackageManager().isPackageInstalled() ? tr("installed") : tr("not installed"));
 
@@ -309,9 +297,9 @@ void SettingsFragment::onTreeItemSelected(QTreeWidgetItem *cur, QTreeWidgetItem 
     switch (topLevelIndex)
     {
         case -1:
-            if (cur->text(0) == "Context menu")
+            if (ui->selector->indexOfTopLevelItem(cur->parent()) == 4 /* Tray-icon */)
             {
-                ui->stackedWidget->setCurrentIndex(5);
+                ui->stackedWidget->setCurrentIndex(5); // Context menu
             }
             break;
         default:
@@ -327,19 +315,7 @@ void SettingsFragment::onTreeItemSelected(QTreeWidgetItem *cur, QTreeWidgetItem 
 
 void SettingsFragment::onAutoStartToggled()
 {
-    QString path = AutostartManager::getAutostartPath("jdsp-gui.desktop");
-    if (ui->systray_minOnBoot->isChecked())
-    {
-        AutostartManager::saveDesktopFile(path,
-                                          AppConfig::instance().get<QString>(AppConfig::ExecutablePath),
-                                          ui->systray_delay->isChecked());
-    }
-    else
-    {
-        QFile(path).remove();
-    }
-
-    ui->systray_delay->setEnabled(ui->systray_minOnBoot->isChecked());
+    AutostartManager::setEnabled(ui->systray_minOnBoot->isChecked());
 }
 
 void SettingsFragment::onSystrayToggled()
@@ -439,11 +415,6 @@ void SettingsFragment::onAeqDatabaseManageClicked()
     aeqSel->forceManageMode();
     aeqSel->exec();
     refreshAll();
-}
-
-void SettingsFragment::onCrashShareToggled(bool state)
-{
-    AppConfig::instance().set(AppConfig::SendCrashReports, state);
 }
 
 void SettingsFragment::setVisible(bool visible)

@@ -6,6 +6,7 @@
 
 #include <QApplication>
 #include <QCommandLineParser>
+#include <QLibraryInfo>
 #include <QScreen>
 #include <QStyle>
 #include <QScopeGuard>
@@ -19,8 +20,6 @@
 #ifndef NO_CRASH_HANDLER
 #include "crash/airbag.h"
 #include "crash/stacktrace.h"
-
-#include <utils/CrashReportSender.h>
 
 static bool SPIN_ON_CRASH = false;
 
@@ -54,6 +53,7 @@ int main(int   argc,
 	find_yourself(exepath, sizeof(exepath));
 
     mkdir("/tmp/jamesdsp/", S_IRWXU);
+
 #ifndef NO_CRASH_HANDLER
     QFile crashDmp(STACKTRACE_LOG);
 
@@ -78,11 +78,8 @@ int main(int   argc,
 #endif
 
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     QApplication app(argc, argv);
-
-    QTranslator translator;
-    translator.load(":/translations/jamesdsp_" + QLocale::system().name());
-    app.installTranslator(&translator);
 
 	QCommandLineParser parser;
 	parser.setApplicationDescription("JamesDSP for Linux");
@@ -99,7 +96,21 @@ int main(int   argc,
     parser.addOption(silent);
     QCommandLineOption nocolor(QStringList() << "c" << "no-color", "Disable colored log output");
     parser.addOption(nocolor);
+    QCommandLineOption lang(QStringList() << "l" << "lang", "Force language (two letter country code)", "lang");
+    parser.addOption(lang);
     parser.process(app);
+
+    QString defaultLocale = QLocale::system().name(); // e.g. "de_DE"
+    defaultLocale.truncate(defaultLocale.lastIndexOf('_')); // e.g. "de"
+    QString locale = (parser.isSet(lang) ? parser.value(lang) : defaultLocale);
+
+    QTranslator translator;
+    translator.load(":/translations/jamesdsp_" + locale + ".qm");
+    app.installTranslator(&translator);
+
+    QTranslator qtTranslator;
+    qtTranslator.load("qt_" + locale + ".qm", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    app.installTranslator(&qtTranslator);
 
 #ifndef NO_CRASH_HANDLER
     SPIN_ON_CRASH = parser.isSet(spinlck);
@@ -117,8 +128,10 @@ int main(int   argc,
     Log::instance().setColoredOutput(!parser.isSet(nocolor));
 
     Log::clear();
+
     Log::information("Application version: " + QString(APP_VERSION_FULL));
     Log::information("Qt library version: " + QString(qVersion()));
+    Log::information("Using language: " + QString(locale));
 
     Log::debug("Launched by system session manager: " + QString(qApp->isSessionRestored() ? "yes" : "no")); /* unreliable */
     QGuiApplication::setFallbackSessionManagementEnabled(false);   
@@ -127,13 +140,6 @@ int main(int   argc,
         manager.setRestartHint(QSessionManager::RestartNever);
         manager.release();
     }, Qt::DirectConnection);
-
-    QFile id("/var/lib/dbus/machine-id");
-    if(id.open(QFile::ReadOnly | QFile::Text))
-    {
-        Log::debug("Environment id: " + QString::fromLocal8Bit(id.readAll()).simplified().trimmed());
-        id.close();
-    }
 
     // Check if another instance is already running and switch to it if that's the case
     auto *instanceMonitor = new SingleInstanceMonitor();
@@ -148,12 +154,6 @@ int main(int   argc,
     if(lastSessionCrashed)
     {
         Log::information("Last session crashed unexpectedly. A crash report has been saved here: " + QString(STACKTRACE_LOG_OLD));
-
-        if(AppConfig::instance().get<bool>(AppConfig::SendCrashReports))
-        {
-           Log::debug("Submitting anonymous crash dump...");
-           CrashReportSender::upload(Log::pathOld(), QString(STACKTRACE_LOG_OLD)); /* fire and forget */
-        }
     }
 #endif
 

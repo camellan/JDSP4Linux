@@ -5779,7 +5779,7 @@ unsigned char *compileCodeBlockWithRet(compileContext *ctx, opcodeRec *rec, int3
 	p += funcsz;
 	memcpy(p, &GLUE_RET, sizeof(GLUE_RET)); p += sizeof(GLUE_RET);
 #ifdef __arm__
-	__clear_cache(newblock2, p);
+	//__clear_cache(newblock2, p);
 #endif
 	ctx->l_stats[2] += funcsz + 2;
 	return newblock2;
@@ -7187,7 +7187,7 @@ NSEEL_CODEHANDLE NSEEL_code_compile_ex(NSEEL_VMCTX _ctx, const char *_expression
 			ctx->l_stats[1] = size;
 			handle->code_size = (int32_t)(writeptr - (unsigned char *)handle->code);
 #ifdef __arm__
-			__clear_cache(handle->code, writeptr);
+			//__clear_cache(handle->code, writeptr);
 #endif
 		}
 		handle->blocks = ctx->blocks_head;
@@ -7271,6 +7271,7 @@ void NSEEL_VM_freevars(NSEEL_VMCTX _ctx)
 	if (_ctx)
 	{
 		compileContext *ctx = (compileContext*)_ctx;
+		memset(ctx->ram_state, 0, sizeof(ctx->ram_state));
 		free(ctx->varTable_Values);
 		free(ctx->varTable_Names);
 		ctx->varTable_Values = 0;

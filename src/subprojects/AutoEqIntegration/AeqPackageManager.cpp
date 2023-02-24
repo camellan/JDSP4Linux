@@ -4,10 +4,9 @@
 
 #include "config/AppConfig.h"
 
-#include <http/src/http.h>
 #include <QDir>
 #include <QFile>
-#include <networkhttpreply.h>
+#include <QNetworkAccessManager>
 
 #define REPO_ROOT QString("https://raw.githubusercontent.com/ThePBone/AutoEqPackages/main/")
 
@@ -15,7 +14,7 @@ using namespace QtPromise;
 
 AeqPackageManager::AeqPackageManager(QObject *parent) : QObject(parent), nam(new QNetworkAccessManager(this))
 {
-
+    nam->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
 }
 
 QtPromise::QPromise<void> AeqPackageManager::installPackage(AeqVersion version, QWidget* hostWindow)
@@ -24,15 +23,15 @@ QtPromise::QPromise<void> AeqPackageManager::installPackage(AeqVersion version, 
         const QtPromise::QPromiseResolve<void>& resolve,
                 const QtPromise::QPromiseReject<void>& reject) {
 
-            auto downloader = new GzipDownloaderDialog(version.toDownloadReply(), databaseDirectory(), hostWindow);
+            auto reply = nam->get(QNetworkRequest(QUrl(version.packageUrl)));
+            auto downloader = new GzipDownloaderDialog(reply, databaseDirectory(), hostWindow);
             bool success = downloader->exec();
             downloader->deleteLater();
 
             if(success)
-            {
                 resolve();
-            }
-            reject();
+            else
+                reject();
         }};
 }
 
@@ -50,28 +49,31 @@ bool AeqPackageManager::isPackageInstalled()
 
 QtPromise::QPromise<AeqVersion> AeqPackageManager::isUpdateAvailable()
 {
-    return QPromise<AeqVersion>{[&](
+    return QPromise<AeqVersion>{[this](
         const QtPromise::QPromiseResolve<AeqVersion>& resolve,
-                const QtPromise::QPromiseReject<AeqVersion>& reject) {
+        const QtPromise::QPromiseReject<AeqVersion>& reject) {
 
-            this->getRepositoryVersion().then([&](AeqVersion remote){
-                this->getLocalVersion().then([&](AeqVersion local){
-                    if(remote.packageTime > local.packageTime)
-                    {
-                        // Remote is newer
+            QtPromisePrivate::qtpromise_defer([=, this]() {
+
+                this->getRepositoryVersion().then([=, this](AeqVersion remote){
+                    this->getLocalVersion().then([=](AeqVersion local){
+                        if(remote.packageTime > local.packageTime)
+                        {
+                            // Remote is newer
+                            resolve(remote);
+                        }
+                        else
+                        {
+                            reject(remote);
+                        }
+                    }).fail([=]{
+                        // Local file not available, choose remote
                         resolve(remote);
-                    }
-                    else
-                    {
-                        reject(remote);
-                    }
-                }).fail([&]{
-                    // Local file not available, choose remote
-                    resolve(remote);
+                    });
+                }).fail([=](const HttpException& error) {
+                    // API error
+                    reject(error);
                 });
-            }).fail([reject](const HttpException& error) {
-                // API error
-                reject(error);
             });
         }};
 }

@@ -191,7 +191,7 @@ MainWindow::MainWindow(bool     statupInTray,
         {
             ui->enable_eq->setChecked(true);
 
-            if (preset == "Default")
+            if (preset == PresetProvider::EQ::defaultPresetName())
             {
                 resetEQ();
             }
@@ -227,6 +227,24 @@ MainWindow::MainWindow(bool     statupInTray,
         connect(_trayIcon, &TrayIcon::changeDisableFx, this,          &MainWindow::applyConfig);
 
         _trayIcon->setTrayVisible(AppConfig::instance().get<bool>(AppConfig::TrayIconEnabled) || _startupInTraySwitch);
+    }
+
+    // Populate preset lists
+    {
+        for (const auto &preset : PresetProvider::EQ::EQ_LOOKUP_TABLE().keys())
+        {
+            ui->eqpreset->addItem(preset);
+        }
+
+        for (const auto &preset : PresetProvider::Reverb::getPresetNames())
+        {
+            ui->roompresets->addItem(preset);
+        }
+
+        for (const auto &[key, value] : PresetProvider::BS2B::BS2B_LOOKUP_TABLE().toStdMap())
+        {
+            ui->crossfeed_mode->addItem(key, value);
+        }
     }
 
     // Load config and connect fragment signals
@@ -267,7 +285,7 @@ MainWindow::MainWindow(bool     statupInTray,
         menu->addSeparator();
         menu->addAction(tr("Open LiveprogIDE"), _eelEditor, &EELEditor::show);
         menu->addSeparator();
-        menu->addAction(tr("What's this..."), this, []()
+        menu->addAction(tr("What's this... (Select UI element)"), this, []()
         {
             QWhatsThis::enterWhatsThisMode();
         });
@@ -276,17 +294,17 @@ MainWindow::MainWindow(bool     statupInTray,
         connect(_styleHelper, &StyleHelper::iconColorChanged, this, [this](bool white){
             if (white)
             {
-                ui->set->setIcon(QPixmap(":/icons/settings-white.svg"));
-                ui->cpreset->setIcon(QPixmap(":/icons/queue-white.svg"));
-                ui->toolButton->setIcon(QPixmap(":/icons/menu-white.svg"));
-                ui->disableFX->setIcon(QPixmap(":/icons/power-white.svg"));
+                ui->set->setIcon(QIcon(":/icons/settings-white.svg"));
+                ui->cpreset->setIcon(QIcon(":/icons/queue-white.svg"));
+                ui->toolButton->setIcon(QIcon(":/icons/menu-white.svg"));
+                ui->disableFX->setIcon(QIcon(":/icons/power-white.svg"));
             }
             else
             {
-                ui->set->setIcon(QPixmap(":/icons/settings.svg"));
-                ui->cpreset->setIcon(QPixmap(":/icons/queue.svg"));
-                ui->toolButton->setIcon(QPixmap(":/icons/menu.svg"));
-                ui->disableFX->setIcon(QPixmap(":/icons/power.svg"));
+                ui->set->setIcon(QIcon(":/icons/settings.svg"));
+                ui->cpreset->setIcon(QIcon(":/icons/queue.svg"));
+                ui->toolButton->setIcon(QIcon(":/icons/menu.svg"));
+                ui->disableFX->setIcon(QIcon(":/icons/power.svg"));
             }
         });
     }
@@ -342,14 +360,6 @@ MainWindow::MainWindow(bool     statupInTray,
         connect(ui->liveprog, &LiveprogSelectionWidget::unitLabelUpdateRequested, ui->info, qOverload<const QString&>(&FadingLabel::setAnimatedText));
     }
 
-    // Populate preset lists
-    {
-        for (const auto &preset : PresetProvider::EQ::EQ_LOOKUP_TABLE().keys())
-        {
-            ui->eqpreset->addItem(preset);
-        }
-    }
-
     // Connect remaining signals
     {
         connectActions();
@@ -374,14 +384,14 @@ MainWindow::MainWindow(bool     statupInTray,
         ui->tabbar->setAnimatePageChange(true);
         ui->tabbar->setCustomStackWidget(ui->tabhost);
         ui->tabbar->setDetachCustomStackedWidget(true);
-        ui->tabbar->addPage("Bass/Misc");
-        ui->tabbar->addPage("Sound Positioning");
-        ui->tabbar->addPage("Reverb");
-        ui->tabbar->addPage("Equalizer");
-        ui->tabbar->addPage("Convolver");
-        ui->tabbar->addPage("DDC");
-        ui->tabbar->addPage("Liveprog");
-        ui->tabbar->addPage("Graphic EQ");
+        ui->tabbar->addPage(tr("Bass/Misc"));
+        ui->tabbar->addPage(tr("Sound Positioning"));
+        ui->tabbar->addPage(tr("Reverb"));
+        ui->tabbar->addPage(tr("Equalizer"));
+        ui->tabbar->addPage(tr("Convolver"));
+        ui->tabbar->addPage(tr("DDC"));
+        ui->tabbar->addPage(tr("Liveprog"));
+        ui->tabbar->addPage(tr("Graphic EQ"));
         ui->frame->setStyleSheet(QString("QFrame#frame{background-color: %1;}").arg(qApp->palette().window().color().lighter().name()));
         ui->tabhost->setStyleSheet(QString("QWidget#tabHostPage1,QWidget#tabHostPage2,QWidget#tabHostPage3,QWidget#tabHostPage4,QWidget#tabHostPage5,QWidget#tabHostPage6,QWidget#tabHostPage7,QWidget#tabHostPage8,QWidget#tabHostPage9{background-color: %1;}").arg(qApp->palette().window().color().lighter().name()));
         ui->tabbar->redrawTabBar();
@@ -435,7 +445,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 #endif
 
-    if (_trayIcon->isVisible() && !_allowCloseEvent)
+    if (_trayIcon->isVisible())
     {
         hide();
         event->ignore();
@@ -451,12 +461,6 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 {
     QMainWindow::resizeEvent(event);
     AppConfig::instance().setBytes(AppConfig::LastWindowGeometry, saveGeometry());
-}
-
-void MainWindow::shutdown()
-{
-    _allowCloseEvent = true;
-    this->close();
 }
 
 // Systray
@@ -625,7 +629,11 @@ void MainWindow::loadConfig()
 
     ui->bs2b->setChecked(DspConfig::instance().get<bool>(DspConfig::crossfeed_enable));
     int bs2bMode = DspConfig::instance().get<int>(DspConfig::crossfeed_mode);
-    ui->crossfeed_mode->setCurrentText(PresetProvider::BS2B::reverseLookup(bs2bMode));
+    int bs2bIndex = ui->crossfeed_mode->findData(bs2bMode);
+    if(bs2bIndex < 0)
+        Log::error(QString("BS2B index for value %1 not found").arg(bs2bMode));
+    else
+        ui->crossfeed_mode->setCurrentIndex(bs2bIndex);
     ui->bs2b_feed->setValueA(DspConfig::instance().get<int>(DspConfig::crossfeed_bs2b_feed));
     ui->bs2b_fcut->setValueA(DspConfig::instance().get<int>(DspConfig::crossfeed_bs2b_fcut));
     ui->bs2b_custom_box->setEnabled(bs2bMode == 99);
@@ -861,26 +869,21 @@ void MainWindow::applyConfig()
 // Predefined presets
 void MainWindow::onEqPresetUpdated()
 {
-    if (ui->eqpreset->currentText() == "Custom" || _blockApply)
+    if (_blockApply)
     {
         return;
     }
 
     auto preset = PresetProvider::EQ::lookupPreset(ui->eqpreset->currentText());
-
     if (preset.size() > 0)
     {
         setEq(preset);
-    }
-    else
-    {
-        resetEQ();
     }
 }
 
 void MainWindow::onBs2bPresetUpdated()
 {
-    if (ui->crossfeed_mode->currentText() == "..." || _blockApply)
+    if (_blockApply)
     {
         return;
     }
@@ -911,7 +914,8 @@ void MainWindow::onReverbPresetUpdated()
         return;
     }
 
-    const auto data = PresetProvider::Reverb::lookupPreset(ui->roompresets->currentIndex());
+    // index - 1 because 1st entry is '...'
+    const auto data = PresetProvider::Reverb::lookupPreset(ui->roompresets->currentIndex() - 1);
     ui->rev_osf->setValueA(data.osf);
     ui->rev_era->setValueA((int) (data.p1 * 100));
     ui->rev_finalwet->setValueA((int) (data.p2 * 10));
@@ -1115,7 +1119,7 @@ void MainWindow::resetEQ()
     ui->eq_dyn_widget->load(DEFAULT_GRAPHICEQ);
     _blockApply = false;
     setEq(PresetProvider::EQ::defaultPreset());
-    applyConfig();
+    // setEq calls applyConfig();
 }
 
 void MainWindow::determineEqPresetName()
@@ -1123,7 +1127,10 @@ void MainWindow::determineEqPresetName()
     QString currentEqPresetName =
             PresetProvider::EQ::reverseLookup(ui->eq_widget->getBands());
 
-    ui->eqpreset->setCurrentText(currentEqPresetName);
+    if(currentEqPresetName.isEmpty())
+        ui->eqpreset->setCurrentIndex(0);
+    else
+        ui->eqpreset->setCurrentText(currentEqPresetName);
 }
 
 void MainWindow::onEqModeUpdated()
@@ -1273,7 +1280,7 @@ void MainWindow::launchFirstRunSetup()
     a->setEasingCurve(QEasingCurve::InBack);
     a->start(QPropertyAnimation::DeleteWhenStopped);
 
-    connect(wiz, &FirstLaunchWizard::wizardFinished, [ = ]
+    connect(wiz, &FirstLaunchWizard::wizardFinished, [lightBox, eff, this]
     {
         QPropertyAnimation *b = new QPropertyAnimation(eff, "opacity");
         b->setDuration(500);
@@ -1282,7 +1289,7 @@ void MainWindow::launchFirstRunSetup()
         b->setEasingCurve(QEasingCurve::OutCirc);
         b->start(QPropertyAnimation::DeleteWhenStopped);
 
-        connect(b, &QAbstractAnimation::finished, [ = ]()
+        connect(b, &QAbstractAnimation::finished, [lightBox, this]()
         {
             AppConfig::instance().set(AppConfig::SetupDone, true);
             lightBox->hide();

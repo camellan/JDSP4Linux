@@ -20,11 +20,15 @@ PresetFragment::PresetFragment(IAudioService* service, QWidget *parent) :
 
     ui->files->setModel(PresetManager::instance().presetModel());
     ui->files->setEmptyViewEnabled(true);
-    ui->files->setEmptyViewTitle("No presets saved");
+    ui->files->setEmptyViewTitle(tr("No presets saved"));
 
     ui->add->setEnabled(false);
     ui->remove->setEnabled(false);
     ui->load->setEnabled(false);
+
+#ifdef USE_PULSEAUDIO
+    ui->rules->setVisible(false);
+#endif
 
     connect(ui->add, &QPushButton::clicked, this, &PresetFragment::onAddClicked);
     connect(ui->load, &QPushButton::clicked, this, &PresetFragment::onLoadClicked);
@@ -115,8 +119,8 @@ void PresetFragment::onNameFieldChanged(const QString &name)
 void PresetFragment::onContextMenuRequested(const QPoint &pos)
 {
     auto globalPos = ui->files->mapToGlobal(pos);
-    auto actionRename = ctxMenu.addAction("Rename");
-    auto actionDelete = ctxMenu.addAction("Delete");
+    auto actionRename = ctxMenu.addAction(tr("Rename"));
+    auto actionDelete = ctxMenu.addAction(tr("Delete"));
     auto preset = PresetManager::instance().presetModel()->data(ui->files->indexAt(pos), Qt::UserRole);
 
     if (!preset.isValid() || preset.isNull())
