@@ -1595,32 +1595,32 @@ Bitte wählen Sie eine andere</translation>
       <translation>Anwendung starten</translation>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="545"/>
+      <location filename="../../src/MainWindow.cpp" line="539"/>
       <source>Reset Configuration</source>
       <translation>Konfiguration zurücksetzen</translation>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="545"/>
+      <location filename="../../src/MainWindow.cpp" line="539"/>
       <source>Are you sure?</source>
       <translation>Bist du dir sicher?</translation>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="569"/>
+      <location filename="../../src/MainWindow.cpp" line="563"/>
       <source>Load custom audio.conf</source>
       <translation>Benutzerdefinierte audio.conf laden</translation>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="581"/>
+      <location filename="../../src/MainWindow.cpp" line="575"/>
       <source>Save current audio.conf</source>
       <translation>Aktuelle audio.conf speichern</translation>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="1091"/>
+      <location filename="../../src/MainWindow.cpp" line="1085"/>
       <source>Advanced waveform editing</source>
       <translation>Erweiterte Wellenform-Bearbeitung</translation>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="1092"/>
+      <location filename="../../src/MainWindow.cpp" line="1086"/>
       <source>Advanced waveform editing (default: -80;-100;0;0;0;0)
 
 Set threshold of auto-IR-cropping and add delay to a chopped/minimum phase transformed IR.
@@ -2439,91 +2439,86 @@ Bitte erstelle zuerst eine vor dem Hinzufügen einer neuen Regel.</translation>
       <translation>Beim Booten minimiert starten</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="695"/>
-      <source>Delay autostart by 5 seconds</source>
-      <translation>Autostart um 5 Sekunden verzögern</translation>
-    </message>
-    <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="717"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="710"/>
       <source>Systray not supported on this system</source>
       <translation>Systray wird nicht von diesem System unterstützt</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="767"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="760"/>
       <source>Visit Github repo</source>
       <translation>Github-Repo besuchen</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="793"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="786"/>
       <source>Run setup wizard</source>
       <translation>Setup-Assistent ausführen</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="816"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="809"/>
       <source>Close</source>
       <translation>Schließen</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="186"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="185"/>
       <source>Unknown (%1)</source>
       <translation>Unbekannt (%1)</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="248"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="243"/>
       <source>installed</source>
       <translation>installiert</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="248"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="243"/>
       <source>not installed</source>
       <translation>nicht installiert</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="269"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="264"/>
       <source>Override liveprog scripts?</source>
       <translation>Liveprog-Skripte überschreiben?</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="270"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="265"/>
       <source>Do you want to override existing default liveprog scripts?
 If they have been modified, they will be reset.</source>
       <translation>Möchtest du bestehende Liveprog-Standardskripte überschreiben?
 Wenn sie geändert wurden, werden sie zurückgesetzt.</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="273"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="268"/>
       <source>Extract assets</source>
       <translation>Assets extrahieren</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="273"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="268"/>
       <source>%1 files have been restored</source>
       <translation>%1 Dateien wurden exportiert</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="373"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="356"/>
       <source>You are about to enable allowlist mode. JamesDSP will not process all applications by default while this mode is active. You need to explicitly allow each app to get processed in the &apos;Apps&apos; menu.
 </source>
       <translation>Du bist dabei, den Erlaubnislisten-Modus zu aktivieren. JamesDSP wird alle Anwendungen standardmäßig nicht mehr verarbeiten, solange dieser Modus aktiv ist. Sie müssen Apps explizit im Menü &apos;Apps&apos; zulassen.
 </translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="375"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="358"/>
       <source>Are you sure?</source>
       <translation>Bist du dir sicher?</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="376"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="359"/>
       <source>This action will reset your current blocklist or allowlist. Do you want to continue?</source>
       <translation>Diese Aktion wird deine aktuelle Sperrliste oder Erlaubnisliste zurücksetzen. Möchtest du fortfahren?</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="404"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="387"/>
       <source>Warning</source>
       <translation>Warnung</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="404"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="387"/>
       <source>Do you really want to restore the default menu layout?</source>
       <translation>Möchtest du das Standard-Menülayout wirklich wiederherstellen?</translation>
     </message>

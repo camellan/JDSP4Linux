@@ -6,17 +6,17 @@
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqListDelegates.h" line="46"/>
       <source>2nd choice</source>
-      <translation type="unfinished"/>
+      <translation>2-й вариант</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqListDelegates.h" line="49"/>
       <source>3rd choice</source>
-      <translation type="unfinished"/>
+      <translation>3-й вариант</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqListDelegates.h" line="52"/>
       <source>%1th choice</source>
-      <translation type="unfinished"/>
+      <translation>%1 -ый вариант</translation>
     </message>
   </context>
   <context>
@@ -24,17 +24,17 @@
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="17"/>
       <source>Frequency (Hz)</source>
-      <translation type="unfinished"/>
+      <translation>Частота (Гц)</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="20"/>
       <source>Amplitude (dBr)</source>
-      <translation type="unfinished"/>
+      <translation>Амплитуда (dBr)</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="84"/>
       <source>Target</source>
-      <translation type="unfinished"/>
+      <translation>Цель</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="85"/>
@@ -49,7 +49,7 @@
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="87"/>
       <source>Equalization</source>
-      <translation type="unfinished"/>
+      <translation>Эквализация</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="89"/>
@@ -59,42 +59,42 @@
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="90"/>
       <source>Error</source>
-      <translation type="unfinished"/>
+      <translation>Ошибка</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="93"/>
       <source>Equalized</source>
-      <translation type="unfinished"/>
+      <translation>Выровнено</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="162"/>
       <source>Equalization (normalized)</source>
-      <translation type="unfinished"/>
+      <translation>Эквализация (нормализовано)</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="209"/>
       <source>Move to top left</source>
-      <translation type="unfinished"/>
+      <translation>Переместить вверх влево</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="210"/>
       <source>Move to top center</source>
-      <translation type="unfinished"/>
+      <translation>Переместить вверх по центру</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="211"/>
       <source>Move to top right</source>
-      <translation type="unfinished"/>
+      <translation>Переместить вверх справа</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="212"/>
       <source>Move to bottom right</source>
-      <translation type="unfinished"/>
+      <translation>Переместить справа вниз</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="213"/>
       <source>Move to bottom left</source>
-      <translation type="unfinished"/>
+      <translation>Переместить слева вниз</translation>
     </message>
   </context>
   <context>
@@ -180,12 +180,12 @@ This will override your current GraphicEQ configuration.</source>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="35"/>
       <source>No measurements found</source>
-      <translation type="unfinished"/>
+      <translation>Измерения не найдены</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="80"/>
       <source>AutoEQ database</source>
-      <translation type="unfinished"/>
+      <translation>База данных AutoEQ</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="81"/>
@@ -193,13 +193,16 @@ This will override your current GraphicEQ configuration.</source>
 An internet connection is required during this step.
 
 Do you want to continue and enable this feature?</source>
-      <translation type="unfinished"/>
+      <translation>Перед использованием интеграции AutoEQ вам необходимо загрузить уменьшенную версию их базы данных компенсации для наушников (~ 50 МБ) на свой жесткий диск.
+На этом этапе требуется подключение к Интернету.
+
+Вы хотите продолжить и включить эту функцию?</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="105"/>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="136"/>
       <source>Failed to retrieve version information</source>
-      <translation type="unfinished"/>
+      <translation>Не удалось получить информацию о версии</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="105"/>
@@ -208,17 +211,20 @@ Do you want to continue and enable this feature?</source>
 
 Status code: %0
 Reason: %1</source>
-      <translation type="unfinished"/>
+      <translation>Не удалось получить информацию о пакете из удаленного репозитория:
+
+Код состояния: %0
+Причина: %1</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="117"/>
       <source>Return to database</source>
-      <translation type="unfinished"/>
+      <translation>Вернуться к базе данных</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="139"/>
       <source>No new updates available</source>
-      <translation type="unfinished"/>
+      <translation>Нет новых обновлений</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="140"/>
@@ -227,27 +233,31 @@ Reason: %1</source>
 It may take up to 24 hours for new changes in the AutoEQ upstream repo to become available for download here. Packages are generated at 4am UTC daily.
 
 Do you want to re-install the latest database update anyway?</source>
-      <translation type="unfinished"/>
+      <translation>Локальная база данных в настоящее время обновлена; на данный момент никаких новых обновлений не доступно.
+
+Может потребоваться до 24 часов, чтобы новые изменения в репозитории Auto EQ upstream стали доступны для загрузки. Пакеты генерируются ежедневно в 4 утра по Гринвичу.
+
+Вы все равно хотите переустановить последнее обновление базы данных?</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="157"/>
       <source>Database cleared</source>
-      <translation type="unfinished"/>
+      <translation>База данных очищена</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="157"/>
       <source>The database has been removed from your hard disk</source>
-      <translation type="unfinished"/>
+      <translation>База данных была удалена с жесткого диска</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="239"/>
       <source>Error</source>
-      <translation type="unfinished"/>
+      <translation>Ошибка</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="239"/>
       <source>Unable to retrieve corresponding file from database. Please update the local database as it appears to be incomplete.</source>
-      <translation type="unfinished"/>
+      <translation>Невозможно получить соответствующий файл из базы данных. Пожалуйста, обновите локальную базу данных, поскольку она кажется неполной.</translation>
     </message>
   </context>
   <context>
@@ -288,17 +298,17 @@ Do you want to re-install the latest database update anyway?</source>
     <message>
       <location filename="../../src/interface/item/AppItem.cpp" line="80"/>
       <source>Rate: %1Hz</source>
-      <translation type="unfinished"/>
+      <translation>Частота: %1Hz</translation>
     </message>
     <message>
       <location filename="../../src/interface/item/AppItem.cpp" line="81"/>
       <source>Latency: %1ms</source>
-      <translation type="unfinished"/>
+      <translation>Задержка: %1ms</translation>
     </message>
     <message>
       <location filename="../../src/interface/item/AppItem.cpp" line="82"/>
       <source>Format: %1</source>
-      <translation type="unfinished"/>
+      <translation>Формат: %1</translation>
     </message>
   </context>
   <context>
@@ -319,12 +329,12 @@ Do you want to re-install the latest database update anyway?</source>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/codeoutline.cpp" line="9"/>
       <source>Annotations</source>
-      <translation type="unfinished"/>
+      <translation>Примечания</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/codeoutline.cpp" line="13"/>
       <source>Functions</source>
-      <translation type="unfinished"/>
+      <translation>Функции</translation>
     </message>
   </context>
   <context>
@@ -332,22 +342,22 @@ Do you want to re-install the latest database update anyway?</source>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/consoleoutput.cpp" line="26"/>
       <source>Auto-scroll</source>
-      <translation type="unfinished"/>
+      <translation>Автопрокрутка</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/consoleoutput.cpp" line="31"/>
       <source>Copy selection</source>
-      <translation type="unfinished"/>
+      <translation>Копировать выбранное</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/consoleoutput.cpp" line="34"/>
       <source>Copy all</source>
-      <translation type="unfinished"/>
+      <translation>Копировать все</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/consoleoutput.cpp" line="39"/>
       <source>Clear</source>
-      <translation type="unfinished"/>
+      <translation>Очистить</translation>
     </message>
   </context>
   <context>
@@ -456,7 +466,7 @@ Do you want to re-install the latest database update anyway?</source>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.ui" line="207"/>
       <source>Ctrl+F</source>
-      <translation type="unfinished"/>
+      <translation>Ctrl+F</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.ui" line="216"/>
@@ -564,47 +574,47 @@ Do you want to re-install the latest database update anyway?</source>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="88"/>
       <source>Loaded projects</source>
-      <translation type="unfinished"/>
+      <translation>Загруженные проекты</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="98"/>
       <source>Code outline</source>
-      <translation type="unfinished"/>
+      <translation>Схема кода</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="108"/>
       <source>Variable view</source>
-      <translation type="unfinished"/>
+      <translation>Изменяемый вид</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="122"/>
       <source>Console output</source>
-      <translation type="unfinished"/>
+      <translation>Консольный вывод</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="212"/>
       <source>&apos;%1&apos; started compiling at %2</source>
-      <translation type="unfinished"/>
+      <translation>&apos;%1&apos; начал компиляцию в %2</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="295"/>
       <source>&lt;br&gt;Compilation stopped at %2</source>
-      <translation type="unfinished"/>
+      <translation>&lt;br&gt; Компиляция остановлена на %2</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="299"/>
       <source>Script initialization took %1ms</source>
-      <translation type="unfinished"/>
+      <translation>Инициализация сценария заняла %1 мс</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="386"/>
       <source>Error</source>
-      <translation type="unfinished"/>
+      <translation>Ошибка</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="386"/>
       <source>Cannot write file</source>
-      <translation type="unfinished"/>
+      <translation>Не удается записать файл</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="414"/>
@@ -619,27 +629,27 @@ Do you want to re-install the latest database update anyway?</source>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="432"/>
       <source>Save as</source>
-      <translation type="unfinished"/>
+      <translation>Сохранить как</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="449"/>
       <source>Cannot execute</source>
-      <translation type="unfinished"/>
+      <translation>Не удается выполнить</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="449"/>
       <source>No script file opened. Please open one first and try again.</source>
-      <translation type="unfinished"/>
+      <translation>Файл скрипта не открыт. Пожалуйста, сначала откройте один из них и попробуйте еще раз.</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="461"/>
       <source>Enter line number:</source>
-      <translation type="unfinished"/>
+      <translation>Введите номер строки:</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/eeleditor.cpp" line="472"/>
       <source>Enter function name:</source>
-      <translation type="unfinished"/>
+      <translation>Введите название функции:</translation>
     </message>
   </context>
   <context>
@@ -860,7 +870,7 @@ However, before you can begin playing around with JamesDSP for Linux, we&apos;ll
     <message>
       <location filename="../../src/subprojects/FlatTabWidget/FlatTabWidget/flattabwidget.ui" line="14"/>
       <source>FlatTabWidget</source>
-      <translation>FlatTabWidget</translation>
+      <translation type="unfinished"/>
     </message>
   </context>
   <context>
@@ -868,7 +878,7 @@ However, before you can begin playing around with JamesDSP for Linux, we&apos;ll
     <message>
       <location filename="../../src/subprojects/GraphicEQWidget/GraphicEQWidget/GraphicEQFilterGUI.ui" line="90"/>
       <source>Enable Graphic EQ</source>
-      <translation>Включить эквалайзер</translation>
+      <translation>Включить Graphic EQ</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/GraphicEQWidget/GraphicEQWidget/GraphicEQFilterGUI.ui" line="177"/>
@@ -929,7 +939,7 @@ However, before you can begin playing around with JamesDSP for Linux, we&apos;ll
       <location filename="../../src/subprojects/GraphicEQWidget/GraphicEQWidget/GraphicEQFilterGUI.ui" line="299"/>
       <location filename="../../src/subprojects/GraphicEQWidget/GraphicEQWidget/GraphicEQFilterGUI.ui" line="302"/>
       <source>Import EqualizerAPO settings</source>
-      <translation>Импорт настроек EqualizerAPO</translation>
+      <translation>Импорт параметров EqualizerAPO</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/GraphicEQWidget/GraphicEQWidget/GraphicEQFilterGUI.cpp" line="409"/>
@@ -970,17 +980,17 @@ However, before you can begin playing around with JamesDSP for Linux, we&apos;ll
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/GzipDownloaderDialog.cpp" line="62"/>
       <source>Error</source>
-      <translation type="unfinished"/>
+      <translation>Ошибка</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/GzipDownloaderDialog.cpp" line="71"/>
       <source>%1MB of %2MB downloaded</source>
-      <translation type="unfinished"/>
+      <translation>%1МБ из %2МБ загружено</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/GzipDownloaderDialog.cpp" line="82"/>
       <source>Decompressing package...</source>
-      <translation type="unfinished"/>
+      <translation>Распаковка пакета...</translation>
     </message>
   </context>
   <context>
@@ -1078,7 +1088,7 @@ Please select another one</source>
     <message>
       <location filename="../../src/MainWindow.ui" line="206"/>
       <source>Maximum release</source>
-      <translation>Максимальное высвобождение</translation>
+      <translation>Максимальный релиз</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="229"/>
@@ -1108,22 +1118,22 @@ Please select another one</source>
     <message>
       <location filename="../../src/MainWindow.ui" line="316"/>
       <source>Limiter/Master</source>
-      <translation type="unfinished"/>
+      <translation>Лимит/Мастер</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="333"/>
       <source>Threshold</source>
-      <translation type="unfinished"/>
+      <translation>Порог</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="362"/>
       <source>Release</source>
-      <translation type="unfinished"/>
+      <translation>Релиз</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="385"/>
       <source>Post gain</source>
-      <translation type="unfinished"/>
+      <translation>Пост-усиление</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="451"/>
@@ -1134,22 +1144,22 @@ Please select another one</source>
       <location filename="../../src/MainWindow.ui" line="454"/>
       <location filename="../../src/MainWindow.ui" line="510"/>
       <source>Crossfeed</source>
-      <translation type="unfinished"/>
+      <translation>Кроссфид</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="475"/>
       <source>Mode</source>
-      <translation type="unfinished"/>
+      <translation>Режим</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="492"/>
       <source>Custom BS2B parameters</source>
-      <translation type="unfinished"/>
+      <translation>Пользовательские параметры BS2B</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="533"/>
       <source>Cut frequency</source>
-      <translation type="unfinished"/>
+      <translation>Срез частоты</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="588"/>
@@ -1159,12 +1169,12 @@ Please select another one</source>
     <message>
       <location filename="../../src/MainWindow.ui" line="591"/>
       <source>Soundstage wideness</source>
-      <translation type="unfinished"/>
+      <translation>Ширина звуковой сцены</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="612"/>
       <source>Widen level</source>
-      <translation type="unfinished"/>
+      <translation>Расширение уровня</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="657"/>
@@ -1179,13 +1189,13 @@ Please select another one</source>
     <message>
       <location filename="../../src/MainWindow.ui" line="703"/>
       <source>Presets</source>
-      <translation type="unfinished"/>
+      <translation>Предустановки</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="736"/>
       <location filename="../../src/MainWindow.ui" line="2090"/>
       <source>...</source>
-      <translation type="unfinished"/>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="750"/>
@@ -1260,17 +1270,17 @@ Please select another one</source>
     <message>
       <location filename="../../src/MainWindow.ui" line="962"/>
       <source>Time decay</source>
-      <translation type="unfinished"/>
+      <translation>Время затухания</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="969"/>
       <source>Delay</source>
-      <translation type="unfinished"/>
+      <translation>Задержка</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="976"/>
       <source>Bass boost</source>
-      <translation type="unfinished"/>
+      <translation>Усиление басов</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="1124"/>
@@ -1476,12 +1486,12 @@ Please select another one</source>
     <message>
       <location filename="../../src/MainWindow.ui" line="2145"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Passthrough&lt;/span&gt;&lt;/p&gt;&lt;p&gt;This option defines whether to enable or disable sound effects.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Сквозной режим&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Этот параметр определяет, включать или отключать звуковые эффекты.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Байпас&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Это функция, позволяющая выполнить коммутацию входного сигнала непосредственно на выход, минуя все функциональные блоки. Другими словами этот параметр определяет, включать или отключать звуковые эффекты. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.ui" line="2148"/>
       <source>Bypass</source>
-      <translation type="unfinished"/>
+      <translation>Байпас</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.cpp" line="141"/>
@@ -1536,7 +1546,7 @@ Please select another one</source>
     <message>
       <location filename="../../src/MainWindow.cpp" line="288"/>
       <source>What&apos;s this... (Select UI element)</source>
-      <translation type="unfinished"/>
+      <translation>Что это... (Выберите элемент пользовательского интерфейса)</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.cpp" line="387"/>
@@ -1551,7 +1561,7 @@ Please select another one</source>
     <message>
       <location filename="../../src/MainWindow.cpp" line="389"/>
       <source>Reverb</source>
-      <translation>Эхо</translation>
+      <translation>Реверберация</translation>
     </message>
     <message>
       <location filename="../../src/MainWindow.cpp" line="390"/>
@@ -1584,32 +1594,32 @@ Please select another one</source>
       <translation>Запуск приложения</translation>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="545"/>
+      <location filename="../../src/MainWindow.cpp" line="539"/>
       <source>Reset Configuration</source>
       <translation>Сброс конфигурации</translation>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="545"/>
+      <location filename="../../src/MainWindow.cpp" line="539"/>
       <source>Are you sure?</source>
       <translation>Вы уверены?</translation>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="569"/>
+      <location filename="../../src/MainWindow.cpp" line="563"/>
       <source>Load custom audio.conf</source>
       <translation>Загрузка пользовательского audio.conf</translation>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="581"/>
+      <location filename="../../src/MainWindow.cpp" line="575"/>
       <source>Save current audio.conf</source>
       <translation>Сохраните текущий файл audio.conf</translation>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="1091"/>
+      <location filename="../../src/MainWindow.cpp" line="1085"/>
       <source>Advanced waveform editing</source>
       <translation>Расширенное редактирование формы сигнала</translation>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="1092"/>
+      <location filename="../../src/MainWindow.cpp" line="1086"/>
       <source>Advanced waveform editing (default: -80;-100;0;0;0;0)
 
 Set threshold of auto-IR-cropping and add delay to a chopped/minimum phase transformed IR.
@@ -1682,22 +1692,22 @@ This setting is only in effect if IR optimization is enabled.
       <location filename="../../src/subprojects/EELEditor/src/widgets/dialog/newfilewizard.cpp" line="46"/>
       <location filename="../../src/subprojects/EELEditor/src/widgets/dialog/newfilewizard.cpp" line="53"/>
       <source>Error</source>
-      <translation type="unfinished"/>
+      <translation>Ошибка</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/dialog/newfilewizard.cpp" line="40"/>
       <source>Workspace directory does not exist</source>
-      <translation type="unfinished"/>
+      <translation>Рабочий каталог не существует</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/dialog/newfilewizard.cpp" line="46"/>
       <source>A file with the same name already exists at this loction</source>
-      <translation type="unfinished"/>
+      <translation>Файл с таким же именем уже существует</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/dialog/newfilewizard.cpp" line="53"/>
       <source>File name is empty or contains illegal characters</source>
-      <translation type="unfinished"/>
+      <translation>Имя файла пустое или содержит недопустимые символы</translation>
     </message>
   </context>
   <context>
@@ -1828,7 +1838,7 @@ This setting is only in effect if IR optimization is enabled.
     <message>
       <location filename="../../src/interface/fragment/PresetFragment.cpp" line="23"/>
       <source>No presets saved</source>
-      <translation type="unfinished"/>
+      <translation>Предустановки не сохранены</translation>
     </message>
     <message>
       <location filename="../../src/interface/fragment/PresetFragment.cpp" line="101"/>
@@ -1853,12 +1863,12 @@ This setting is only in effect if IR optimization is enabled.
     <message>
       <location filename="../../src/interface/fragment/PresetFragment.cpp" line="122"/>
       <source>Rename</source>
-      <translation type="unfinished"/>
+      <translation>Переименовать</translation>
     </message>
     <message>
       <location filename="../../src/interface/fragment/PresetFragment.cpp" line="123"/>
       <source>Delete</source>
-      <translation type="unfinished"/>
+      <translation>Удалить</translation>
     </message>
     <message>
       <location filename="../../src/interface/fragment/PresetFragment.cpp" line="140"/>
@@ -1974,107 +1984,107 @@ Please create one first before adding a new rule.</source>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="29"/>
       <source>Flat</source>
-      <translation type="unfinished"/>
+      <translation>Обычный</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="82"/>
       <source>Pop</source>
-      <translation type="unfinished"/>
+      <translation>Поп</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="83"/>
       <source>Rock</source>
-      <translation type="unfinished"/>
+      <translation>Рок</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="84"/>
       <source>Jazz</source>
-      <translation type="unfinished"/>
+      <translation>Джаз</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="85"/>
       <source>Classic</source>
-      <translation type="unfinished"/>
+      <translation>Классика</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="86"/>
       <source>Bass</source>
-      <translation type="unfinished"/>
+      <translation>Басы</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="87"/>
       <source>Clear</source>
-      <translation type="unfinished"/>
+      <translation>Чистый</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="88"/>
       <source>Hip-Hop</source>
-      <translation type="unfinished"/>
+      <translation>Хип-хоп</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="89"/>
       <source>Dubstep</source>
-      <translation type="unfinished"/>
+      <translation>Дабстеп</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="90"/>
       <source>Movie</source>
-      <translation type="unfinished"/>
+      <translation>Фильм</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="91"/>
       <source>Metal</source>
-      <translation type="unfinished"/>
+      <translation>Металл</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="92"/>
       <source>Vocal Booster</source>
-      <translation type="unfinished"/>
+      <translation>Усиление вокала</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="93"/>
       <source>Hardstyle</source>
-      <translation type="unfinished"/>
+      <translation>Жесткий стиль</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="94"/>
       <source>Acoustic</source>
-      <translation type="unfinished"/>
+      <translation>Акустика</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="95"/>
       <source>R&amp;B</source>
-      <translation type="unfinished"/>
+      <translation>R&amp;B</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="96"/>
       <source>Electronic</source>
-      <translation type="unfinished"/>
+      <translation>Электронная музыка</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="97"/>
       <source>Deep Bass</source>
-      <translation type="unfinished"/>
+      <translation>Глубокий Бас</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="98"/>
       <source>Beats</source>
-      <translation type="unfinished"/>
+      <translation>Биты</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="105"/>
       <source>BS2B Custom</source>
-      <translation type="unfinished"/>
+      <translation>Настраиваемый BS2B</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="106"/>
       <source>BS2B Weak</source>
-      <translation type="unfinished"/>
+      <translation>Слабый BS2B</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="107"/>
       <source>BS2B Strong</source>
-      <translation type="unfinished"/>
+      <translation>Сильный BS2B</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="108"/>
@@ -2084,12 +2094,12 @@ Please create one first before adding a new rule.</source>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="109"/>
       <source>Surround 1</source>
-      <translation type="unfinished"/>
+      <translation>Объемное звучание 1</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="110"/>
       <source>Surround 2</source>
-      <translation type="unfinished"/>
+      <translation>Объемное звучание 2</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="111"/>
@@ -2099,129 +2109,129 @@ Please create one first before adding a new rule.</source>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="204"/>
       <source>Default</source>
-      <translation type="unfinished"/>
+      <translation>По умолчанию</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="204"/>
       <source>Small hall 1</source>
-      <translation type="unfinished"/>
+      <translation>Малый холл 1</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="204"/>
       <source>Small hall 2</source>
-      <translation type="unfinished"/>
+      <translation>Малый холл 2</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="204"/>
       <source>Medium hall 1</source>
-      <translation type="unfinished"/>
+      <translation>Средний холл 1</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="204"/>
       <source>Medium hall 2</source>
-      <translation type="unfinished"/>
+      <translation>Средний холл 2</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="205"/>
       <source>Large hall 1</source>
-      <translation type="unfinished"/>
+      <translation>Большой холл 1</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="205"/>
       <source>Large hall 2</source>
-      <translation type="unfinished"/>
+      <translation>Большой холл 2</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="205"/>
       <source>Small room 1</source>
-      <translation type="unfinished"/>
+      <translation>Маленькая комната 1</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="205"/>
       <source>Small room 2</source>
-      <translation type="unfinished"/>
+      <translation>Маленькая комната 2</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="205"/>
       <source>Medium room 1</source>
-      <translation type="unfinished"/>
+      <translation>Средняя комната 1</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="206"/>
       <source>Medium room 2</source>
-      <translation type="unfinished"/>
+      <translation>Средняя комната 2</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="206"/>
       <source>Large room 1</source>
-      <translation type="unfinished"/>
+      <translation>Большая комната 1</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="206"/>
       <source>Large room 2</source>
-      <translation type="unfinished"/>
+      <translation>Большая комната 2</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="206"/>
       <source>Medium ER 1</source>
-      <translation type="unfinished"/>
+      <translation>Средний ER 1</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="206"/>
       <source>Medium ER 2</source>
-      <translation type="unfinished"/>
+      <translation>Средний ER 2</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="207"/>
       <source>Plate high</source>
-      <translation type="unfinished"/>
+      <translation>Плоские высокие</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="207"/>
       <source>Plate low</source>
-      <translation type="unfinished"/>
+      <translation>Плоские низкие</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="207"/>
       <source>Long reverb 1</source>
-      <translation>Долгое эхо 1</translation>
+      <translation>Длинная реверберация 1</translation>
     </message>
     <message>
       <location filename="../../src/data/PresetProvider.cpp" line="207"/>
       <source>Long reverb 2</source>
-      <translation>Долгое эхо 2</translation>
+      <translation>Длинная реверберация 2</translation>
     </message>
     <message>
       <location filename="../../src/audio/base/AppNode.h" line="41"/>
       <source>error</source>
-      <translation type="unfinished"/>
+      <translation>ошибка</translation>
     </message>
     <message>
       <location filename="../../src/audio/base/AppNode.h" line="44"/>
       <source>creating</source>
-      <translation type="unfinished"/>
+      <translation>создание</translation>
     </message>
     <message>
       <location filename="../../src/audio/base/AppNode.h" line="47"/>
       <source>suspended</source>
-      <translation type="unfinished"/>
+      <translation>приостановлено</translation>
     </message>
     <message>
       <location filename="../../src/audio/base/AppNode.h" line="50"/>
       <location filename="../../src/audio/base/AppNode.h" line="78"/>
       <source>idle</source>
-      <translation type="unfinished"/>
+      <translation>бездействует</translation>
     </message>
     <message>
       <location filename="../../src/audio/base/AppNode.h" line="53"/>
       <location filename="../../src/audio/base/AppNode.h" line="76"/>
       <source>running</source>
-      <translation type="unfinished"/>
+      <translation>работает</translation>
     </message>
     <message>
       <location filename="../../src/audio/base/AppNode.h" line="80"/>
       <source>not connected</source>
-      <translation type="unfinished"/>
+      <translation>не подключено</translation>
     </message>
   </context>
   <context>
@@ -2294,12 +2304,12 @@ Please create one first before adding a new rule.</source>
     <message>
       <location filename="../../src/interface/fragment/SettingsFragment.ui" line="311"/>
       <source>Impluse responses</source>
-      <translation type="unfinished"/>
+      <translation>Пульсирующие отклики</translation>
     </message>
     <message>
       <location filename="../../src/interface/fragment/SettingsFragment.ui" line="328"/>
       <source>VDCs</source>
-      <translation type="unfinished"/>
+      <translation>VDC</translation>
     </message>
     <message>
       <location filename="../../src/interface/fragment/SettingsFragment.ui" line="342"/>
@@ -2314,17 +2324,17 @@ Please create one first before adding a new rule.</source>
     <message>
       <location filename="../../src/interface/fragment/SettingsFragment.ui" line="388"/>
       <source>Built-in assets</source>
-      <translation type="unfinished"/>
+      <translation>Встроенные ресурсы</translation>
     </message>
     <message>
       <location filename="../../src/interface/fragment/SettingsFragment.ui" line="399"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This option will check on every startup if one of the default EEL scripts is missing. If this is the case the missing file(s) will automatically be restored from the resources. (It will not overwrite them if they already exist!)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Эта опция будет проверять при каждом запуске, не отсутствует ли один из скриптов EEL по умолчанию. Если это так, то отсутствующий файл(ы) будет автоматически восстановлен(ы) из ресурсов. (Он не будет перезаписывать их, если они уже существуют!).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../../src/interface/fragment/SettingsFragment.ui" line="402"/>
       <source>Extract bundled assets on startup</source>
-      <translation type="unfinished"/>
+      <translation>Извлечение связанных ресурсов при запуске</translation>
     </message>
     <message>
       <location filename="../../src/interface/fragment/SettingsFragment.ui" line="422"/>
@@ -2417,91 +2427,86 @@ Please create one first before adding a new rule.</source>
       <translation>Запускать свёрнутым при загрузке</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="695"/>
-      <source>Delay autostart by 5 seconds</source>
-      <translation>Задержка автозапуска на 5 секунд</translation>
-    </message>
-    <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="717"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="710"/>
       <source>Systray not supported on this system</source>
       <translation>Эта система не поддерживает системный трей</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="767"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="760"/>
       <source>Visit Github repo</source>
       <translation>Проект на Github</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="793"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="786"/>
       <source>Run setup wizard</source>
       <translation>Запустить мастер настройки</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="816"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.ui" line="809"/>
       <source>Close</source>
       <translation>Закрыть</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="186"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="185"/>
       <source>Unknown (%1)</source>
       <translation>Неизвестно (%1)</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="248"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="243"/>
       <source>installed</source>
       <translation>установлено</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="248"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="243"/>
       <source>not installed</source>
       <translation>не установлен</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="269"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="264"/>
       <source>Override liveprog scripts?</source>
       <translation>Переопределить скрипты LiveProg?</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="270"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="265"/>
       <source>Do you want to override existing default liveprog scripts?
 If they have been modified, they will be reset.</source>
       <translation>Вы хотите отменить существующие сценарии liveprog по умолчанию?
 Если они были изменены, они будут сброшены.</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="273"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="268"/>
       <source>Extract assets</source>
-      <translation type="unfinished"/>
+      <translation>Извлечь ресурсы</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="273"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="268"/>
       <source>%1 files have been restored</source>
-      <translation type="unfinished"/>
+      <translation>%1 файл(ов) были восстановлены</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="373"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="356"/>
       <source>You are about to enable allowlist mode. JamesDSP will not process all applications by default while this mode is active. You need to explicitly allow each app to get processed in the &apos;Apps&apos; menu.
 </source>
       <translation>Вы собираетесь включить режим белого списка. JamesDSP не будет обрабатывать все приложения по умолчанию, пока этот режим активен. Вам необходимо явно разрешить обработку каждого приложения в меню «Приложения».
 </translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="375"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="358"/>
       <source>Are you sure?</source>
       <translation>Вы уверены?</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="376"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="359"/>
       <source>This action will reset your current blocklist or allowlist. Do you want to continue?</source>
       <translation>Это действие сбросит ваш текущий черный или белый список. Вы хотите продолжать?</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="404"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="387"/>
       <source>Warning</source>
       <translation>Внимание</translation>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="404"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="387"/>
       <source>Do you really want to restore the default menu layout?</source>
       <translation>Вы действительно хотите восстановить структуру меню по умолчанию?</translation>
     </message>
@@ -2574,7 +2579,7 @@ If they have been modified, they will be reset.</source>
     <message>
       <location filename="../../src/interface/TrayIcon.cpp" line="16"/>
       <source>&amp;Bypass</source>
-      <translation>&amp;Обход</translation>
+      <translation>&amp;Байпас</translation>
     </message>
     <message>
       <location filename="../../src/interface/TrayIcon.cpp" line="22"/>
@@ -2662,7 +2667,7 @@ If they have been modified, they will be reset.</source>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/VariableWatchWidget.ui" line="64"/>
       <source>ms</source>
-      <translation>ьс</translation>
+      <translation>мс</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/VariableWatchWidget.ui" line="86"/>
@@ -2683,7 +2688,7 @@ If they have been modified, they will be reset.</source>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/VariableWatchWidget.cpp" line="69"/>
       <source>This variable is a string. Currently only numerical value types can be modified.</source>
-      <translation type="unfinished"/>
+      <translation>Эта переменная является строкой. В настоящее время можно изменять только числовые типы значений.</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/EELEditor/src/widgets/VariableWatchWidget.cpp" line="74"/>
