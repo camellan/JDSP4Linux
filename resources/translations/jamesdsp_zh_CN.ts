@@ -24,7 +24,7 @@
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="17"/>
       <source>Frequency (Hz)</source>
-      <translation type="unfinished"/>
+      <translation>频率 (Hz)</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqPreviewPlot.cpp" line="20"/>
@@ -132,32 +132,32 @@
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.ui" line="178"/>
       <source>Display settings</source>
-      <translation type="unfinished"/>
+      <translation>显示设置</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.ui" line="184"/>
       <source>Dark mode</source>
-      <translation type="unfinished"/>
+      <translation>暗色主题</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.ui" line="207"/>
       <source>Update database</source>
-      <translation type="unfinished"/>
+      <translation>更新数据库</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.ui" line="217"/>
       <source>Download latest AutoEQ package</source>
-      <translation type="unfinished"/>
+      <translation>下载最新的 AutoEQ 包</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.ui" line="224"/>
       <source>Delete database</source>
-      <translation type="unfinished"/>
+      <translation>删除数据库</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.ui" line="234"/>
       <source>Cleanup local database and exit</source>
-      <translation type="unfinished"/>
+      <translation>清除本地数据库并退出</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.ui" line="281"/>
@@ -168,23 +168,24 @@
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.ui" line="288"/>
       <source>Use the search box on the left-hand side to find a suitable measurement for your headphones. Press &apos;OK&apos; to load the equalization data into the audio engine.
 This will override your current GraphicEQ configuration.</source>
-      <translation type="unfinished"/>
+      <translation>使用左侧的搜索框为您的耳机找到合适的预设。 按 &apos;确定&apos; 将均衡器数据加载到音频引擎。
+这将覆盖您当前的 GraphicEQ 配置。</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.ui" line="354"/>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="117"/>
       <source>Manage database</source>
-      <translation type="unfinished"/>
+      <translation>管理数据库</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="35"/>
       <source>No measurements found</source>
-      <translation type="unfinished"/>
+      <translation>未找到预设</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="80"/>
       <source>AutoEQ database</source>
-      <translation type="unfinished"/>
+      <translation>AutoEQ 数据库</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="81"/>
@@ -192,13 +193,16 @@ This will override your current GraphicEQ configuration.</source>
 An internet connection is required during this step.
 
 Do you want to continue and enable this feature?</source>
-      <translation type="unfinished"/>
+      <translation>在使用 AutoEQ 集成之前，您需要下载他们的耳机补偿数据库 (~50MB) 的简化版本到您的硬盘。
+此步骤需要互联网连接。
+
+您想要继续并启用此功能吗？</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="105"/>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="136"/>
       <source>Failed to retrieve version information</source>
-      <translation type="unfinished"/>
+      <translation>获取版本信息失败</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="105"/>
@@ -207,17 +211,20 @@ Do you want to continue and enable this feature?</source>
 
 Status code: %0
 Reason: %1</source>
-      <translation type="unfinished"/>
+      <translation>无法从远程仓库获取包信息：
+
+状态代码： %0
+原因： %1</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="117"/>
       <source>Return to database</source>
-      <translation type="unfinished"/>
+      <translation>返回至数据库</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="139"/>
       <source>No new updates available</source>
-      <translation type="unfinished"/>
+      <translation>无可用更新</translation>
     </message>
     <message>
       <location filename="../../src/subprojects/AutoEqIntegration/AeqSelector.cpp" line="140"/>
@@ -310,6 +317,14 @@ Do you want to re-install the latest database update anyway?</source>
     <message>
       <location filename="../../src/interface/fragment/AppManagerFragment.cpp" line="19"/>
       <source>No apps are playing audio</source>
+      <translation type="unfinished"/>
+    </message>
+  </context>
+  <context>
+    <name>AutostartManager</name>
+    <message>
+      <location filename="../../src/utils/AutoStartManager.cpp" line="79"/>
+      <source>Manage auto-start permission for JamesDSP</source>
       <translation type="unfinished"/>
     </message>
   </context>
@@ -978,7 +993,7 @@ However, before you can begin playing around with JamesDSP for Linux, we&apos;ll
     <name>LiveprogSelectionWidget</name>
     <message>
       <location filename="../../src/interface/LiveprogSelectionWidget.ui" line="90"/>
-      <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="158"/>
+      <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="162"/>
       <source>No script has been loaded</source>
       <translation type="unfinished"/>
     </message>
@@ -994,13 +1009,13 @@ However, before you can begin playing around with JamesDSP for Linux, we&apos;ll
     </message>
     <message>
       <location filename="../../src/interface/LiveprogSelectionWidget.ui" line="127"/>
-      <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="157"/>
+      <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="161"/>
       <source>Create new script</source>
       <translation type="unfinished"/>
     </message>
     <message>
       <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="80"/>
-      <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="134"/>
+      <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="138"/>
       <source>Error</source>
       <translation type="unfinished"/>
     </message>
@@ -1011,18 +1026,18 @@ No EEL file is currently loaded.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="134"/>
+      <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="138"/>
       <source>Selected EEL file does not exist anymore.
 Please select another one</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="164"/>
+      <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="168"/>
       <source>Edit script</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="236"/>
+      <location filename="../../src/interface/LiveprogSelectionWidget.cpp" line="240"/>
       <source>No customizable parameters</source>
       <translation type="unfinished"/>
     </message>
@@ -1473,132 +1488,132 @@ Please select another one</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="141"/>
+      <location filename="../../src/MainWindow.cpp" line="145"/>
       <source>%1 connected - Preset loaded automatically</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="160"/>
+      <location filename="../../src/MainWindow.cpp" line="164"/>
       <source>Cannot execute script</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="161"/>
+      <location filename="../../src/MainWindow.cpp" line="165"/>
       <source>The current EEL file (at &apos;%1&apos;) does not exist anymore on the filesystem. Please reopen the file manually.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="275"/>
+      <location filename="../../src/MainWindow.cpp" line="279"/>
       <source>Apps</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="276"/>
+      <location filename="../../src/MainWindow.cpp" line="280"/>
       <source>Driver status</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="280"/>
+      <location filename="../../src/MainWindow.cpp" line="284"/>
       <source>Relink audio pipeline</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="282"/>
+      <location filename="../../src/MainWindow.cpp" line="286"/>
       <source>Reset to defaults</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="283"/>
+      <location filename="../../src/MainWindow.cpp" line="287"/>
       <source>Load from file</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="284"/>
+      <location filename="../../src/MainWindow.cpp" line="288"/>
       <source>Save to file</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="286"/>
+      <location filename="../../src/MainWindow.cpp" line="290"/>
       <source>Open LiveprogIDE</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="288"/>
+      <location filename="../../src/MainWindow.cpp" line="292"/>
       <source>What&apos;s this... (Select UI element)</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="387"/>
+      <location filename="../../src/MainWindow.cpp" line="393"/>
       <source>Bass/Misc</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="388"/>
+      <location filename="../../src/MainWindow.cpp" line="394"/>
       <source>Sound Positioning</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="389"/>
+      <location filename="../../src/MainWindow.cpp" line="395"/>
       <source>Reverb</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="390"/>
+      <location filename="../../src/MainWindow.cpp" line="396"/>
       <source>Equalizer</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="391"/>
+      <location filename="../../src/MainWindow.cpp" line="397"/>
       <source>Convolver</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="392"/>
+      <location filename="../../src/MainWindow.cpp" line="398"/>
       <source>DDC</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="393"/>
+      <location filename="../../src/MainWindow.cpp" line="399"/>
       <source>Liveprog</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="394"/>
+      <location filename="../../src/MainWindow.cpp" line="400"/>
       <source>Graphic EQ</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="406"/>
+      <location filename="../../src/MainWindow.cpp" line="412"/>
       <source>Launch application</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="539"/>
+      <location filename="../../src/MainWindow.cpp" line="554"/>
       <source>Reset Configuration</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="539"/>
+      <location filename="../../src/MainWindow.cpp" line="554"/>
       <source>Are you sure?</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="563"/>
+      <location filename="../../src/MainWindow.cpp" line="578"/>
       <source>Load custom audio.conf</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="575"/>
+      <location filename="../../src/MainWindow.cpp" line="590"/>
       <source>Save current audio.conf</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="1085"/>
+      <location filename="../../src/MainWindow.cpp" line="1100"/>
       <source>Advanced waveform editing</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/MainWindow.cpp" line="1086"/>
+      <location filename="../../src/MainWindow.cpp" line="1101"/>
       <source>Advanced waveform editing (default: -80;-100;0;0;0;0)
 
 Set threshold of auto-IR-cropping and add delay to a chopped/minimum phase transformed IR.
@@ -2209,6 +2224,31 @@ Please create one first before adding a new rule.</source>
       <source>not connected</source>
       <translation type="unfinished"/>
     </message>
+    <message>
+      <location filename="../../src/main.cpp" line="178"/>
+      <source>JamesDSP is an advanced audio processing engine available for Linux and Android systems.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../../src/utils/AutoStartManager.cpp" line="34"/>
+      <source>Auto-start permission has been denied</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../../src/utils/AutoStartManager.cpp" line="35"/>
+      <source>Please run &apos;flatpak permission-reset %1&apos; and reenable auto-start.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../../src/utils/AutoStartManager.cpp" line="37"/>
+      <source>Unknown error</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../../src/utils/AutoStartManager.cpp" line="38"/>
+      <source>Please make sure a XDG Background Portal implementation is available and active to use auto-start. %1</source>
+      <translation type="unfinished"/>
+    </message>
   </context>
   <context>
     <name>SettingsFragment</name>
@@ -2423,64 +2463,64 @@ Please create one first before adding a new rule.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="185"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="201"/>
       <source>Unknown (%1)</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="243"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="259"/>
       <source>installed</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="243"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="259"/>
       <source>not installed</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="264"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="280"/>
       <source>Override liveprog scripts?</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="265"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="281"/>
       <source>Do you want to override existing default liveprog scripts?
 If they have been modified, they will be reset.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="268"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="284"/>
       <source>Extract assets</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="268"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="284"/>
       <source>%1 files have been restored</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="356"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="376"/>
       <source>You are about to enable allowlist mode. JamesDSP will not process all applications by default while this mode is active. You need to explicitly allow each app to get processed in the &apos;Apps&apos; menu.
 </source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="358"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="378"/>
       <source>Are you sure?</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="359"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="379"/>
       <source>This action will reset your current blocklist or allowlist. Do you want to continue?</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="387"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="407"/>
       <source>Warning</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="387"/>
+      <location filename="../../src/interface/fragment/SettingsFragment.cpp" line="407"/>
       <source>Do you really want to restore the default menu layout?</source>
       <translation type="unfinished"/>
     </message>

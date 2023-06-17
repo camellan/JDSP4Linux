@@ -19,6 +19,7 @@
 <p align="center">
   <a href="#features">Features</a> •
   <a href="#installation">Installation</a> •
+  <a href="#scripting--ipc-apis">Scripting/API</a> •
   <a href="#contributors">Contributors</a> •
   <a href="#license">License</a> 
 </p>
@@ -83,46 +84,23 @@ ____________
 **Designed for use with PipeWire. PulseAudio is only supported for backward compatibility.**
 
 PipeWire has a much lower latency compared to PulseAudio when injecting audio effects processors into the audio graph. 
-
 I'm currently not planning to add more advanced support for Pulseaudio clients. Features such as selective app exclusion, changing the target audio device, and similar features will only be available to PipeWire clients.
-
-*Important: This application can be either compiled with PulseAudio or PipeWire support. Please make sure you choose the correct flavor for your Linux setup before installing!*
-
-*Note: PipeWire's compatibility mode for PulseAudio apps does not work with the PulseAudio flavor of this app. Use the version for PipeWire instead.*
 
 ### Which one am I using?
 
 Follow the instructions below if you don't know which one your Linux distribution is using. If you already know, skip to the 'Install dependencies' section.
 
-##### Step 1: Is PipeWire installed and active?
-
-Run `pw-cli dump short core` in your terminal. 
-
-Does the terminal output look similar to the pattern below after executing the command?
-
-```
-0: u="USER" h="HOSTNAME" v="0.3.35" n="pipewire-0"
-```
-
-* **YES**: You're using PipeWire. Skip ahead, and follow the instructions to install JamesDSP with PipeWire support.
-
-* **NO**: If the command `pw-cli` is not found or it returned an error, you're probably not using PipeWire. Continue to step 2 to find out if PulseAudio is available on your system.
-
-##### Step 2: Is PulseAudio installed and active?
-
 Run `LC_ALL=C pactl info | grep "Server Name:"` in your terminal. 
 
-Does the terminal output look like this after executing the command?
+If you are using **Pipewire** the output should look similar to this:
+```
+Server Name: PulseAudio (on PipeWire 0.3.35)
+```
 
+If you are using **Pulseaudio** the output should look exactly like this:
 ```
 Server Name: pulseaudio
 ```
-
-* **YES**: You're using PulseAudio. Skip ahead, and follow the instructions to install JamesDSP with PulseAudio support.
-
-* **NO**: If the command `pactl` is not found or it returned an error, either your PA installation is broken or you are using another audio framework like Jack. Consider switching to PipeWire in this case.
-
-**IMPORTANT:** If the output mentions PipeWire (`Server Name: PulseAudio (on PipeWire 0.3.35)`), you are using PulseAudio via PipeWire's compatibility mode. You need to install JamesDSP with PipeWire support in this case!
 
 ## Installation
 
@@ -130,47 +108,10 @@ Server Name: pulseaudio
 
 If you don't know which version fits your Linux setup, go to the [PipeWire vs PulseAudio section](#which-one-am-i-using) above.
 
-* [Debian/Ubuntu (PPA)](#debianubuntu)
 * [Arch Linux (AUR)](#arch)
 * [Fedora/openSUSE](#fedoraopensuse)
+* [Debian/Ubuntu (PPA)](#debianubuntu)
 * [Build from sources](#build-from-sources)
-
-### Debian/Ubuntu
-
-##### Minimum system requirements:
-
-**Pulseaudio version**
-* Distro based on Debian 11 or later **OR**
-* Distro based on Ubuntu 21.10 or later
- 
-**Pipewire version**
-* Distro based on Debian 11 or later **OR**
-* Distro based on Ubuntu 21.10 or later
-
-If you need to install this app on an older distro, you need to compile it manually with GCC 11.0 or later.
-
-Add PPA Repo
-```bash
-sudo apt install -y curl
-# thepbone’s PPA Repository key
-curl -s --compressed "https://thepbone.github.io/PPA-Repository/KEY.gpg" -o thepbone_ppa.gpg
-
-cat thepbone_ppa.gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/thepbone_ppa.gpg
-echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/thepbone_ppa.gpg] https://thepbone.github.io/PPA-Repository ./" > /etc/apt/sources.list.d/thepbone_ppa.list
-sudo apt update
-```
-Install from PPA
-
-For **PipeWire clients** only:
-```bash
-sudo apt install jamesdsp-pipewire
-```
-For **PulseAudio clients** only:
-```bash
-sudo apt install jamesdsp-pulse
-```
-[View PPA on GitHub](https://github.com/ThePBone/PPA-Repository)
-
 
 ### Arch
 [AUR packages](https://aur.archlinux.org/packages/?O=0&K=jamesdsp) are available:
@@ -217,6 +158,40 @@ yum copr enable arrobbins/JDSP4Linux && yum update && yum install jamesdsp
 
 If you are still using PulseAudio with your Fedora/openSUSE installation, refer to the '[Build from sources](#build-from-sources)' section below instead.
 
+### Debian/Ubuntu
+
+> **Warning**: The PPA repo is unmaintained and deprecated. At th moment, it is still being auto-updated by an automated GitHub CI workflow. I'm working on setting up flatpak packages as a more stable and universal alternative.
+
+##### Minimum system requirements:
+
+* Distro based on Debian 11 or later **OR**
+* Distro based on Ubuntu 21.10 or later
+
+If you need to install this app on an older distro, you need to compile it manually with GCC 11.0 or later.
+
+Add PPA Repo
+```bash
+sudo apt install -y curl
+# thepbone’s PPA Repository key
+curl -s --compressed "https://thepbone.github.io/PPA-Repository/KEY.gpg" -o thepbone_ppa.gpg
+
+cat thepbone_ppa.gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/thepbone_ppa.gpg
+sudo sh -c ' echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/thepbone_ppa.gpg] https://thepbone.github.io/PPA-Repository ./" > /etc/apt/sources.list.d/thepbone_ppa.list '
+sudo apt update
+```
+Install from PPA
+
+For **PipeWire clients** only:
+```bash
+sudo apt install jamesdsp-pipewire
+```
+For **PulseAudio clients** only:
+```bash
+sudo apt install jamesdsp-pulse
+```
+[View PPA on GitHub](https://github.com/ThePBone/PPA-Repository)
+
+
 ### Build from sources
 
 #### Install dependencies
@@ -230,7 +205,6 @@ Debian/Ubuntu + **PipeWire** clients only:
 ```bash
 sudo apt install build-essential libarchive-dev qtbase5-private-dev qtbase5-dev libqt5svg5-dev libglibmm-2.4-dev libglib2.0-dev libpipewire-0.3-dev 
 ```
-NOTE: Pipewire version 0.3 or later required. Unfortunately, this version is only in the official Ubuntu repository for Ubuntu 20.10 or later. If you use Ubuntu 20.04 or earlier, you need to compile this dependency yourself or use PulseAudio instead.
 
 Debian/Ubuntu + **PulseAudio** clients only:
 
@@ -330,6 +304,43 @@ Download icon
 ```bash
 sudo wget -O /usr/share/pixmaps/jamesdsp.png https://raw.githubusercontent.com/Audio4Linux/JDSP4Linux/master/resources/icons/icon.png -q --show-progress
 ```
+## Scripting & IPC APIs
+
+Since version 2.5.0, this app supports IPC via D-Bus and is also configurable via a CLI.
+
+### Remote control via CLI
+You can list all supported commands using `jamesdsp --help`. 
+Currently, these commands for remote-controlling JamesDSP's audio engine are available:
+```
+  --is-connected               Check if JamesDSP service is active. Returns exit code 1 if not. (Remote)
+  --list-keys                  List available audio configuration keys (Remote)
+  --get <key>                  Get audio configuration value (Remote)
+  --set <key=value>            Set audio configuration value (format: key=value) (Remote)
+  --load-preset <name>         Load preset by name (Remote)
+  --save-preset <name>         Save current settings as preset (Remote)
+  --delete-preset <name>       Delete preset by name (Remote)
+  --list-presets               List presets (Remote)
+  --status                     Show status (Remote)
+```
+The options should be fairly self-explanatory. For example, `jamesdsp --set reverb_enable=true` would enable the reverberation setting. Have a look at the audio configuration file at `~/.config/jamesdsp/audio.conf` to learn more about possible setting keys and their syntax.
+
+> **Note**: These commands try to connect to an active JamesDSP instance. If no instance is currently online, they will fall-back to modifying the audio configuration file directly on disk. The `--is-connected` option can be used to check whether one is currently online.
+
+### D-Bus IPC
+
+This app also exposes a D-Bus service on the session bus which can be used by other developers or users:
+
+Service name: `me.timschneeberger.jdsp4linux`
+* GUI-related interface:
+  * Path name: `/jdsp4linux/gui`
+  * Interface name: `me.timschneeberger.jdsp4linux.Gui`
+* Audio service-related interface:
+  * Path name: `/jdsp4linux/service`
+  * Interface name: `me.timschneeberger.jdsp4linux.Service`
+
+If you want to test it out, you can use an app like [D-Feet](https://wiki.gnome.org/Apps/DFeet) to interact with the D-Bus services.
+
+The D-Bus introspection XML is available here: https://github.com/Audio4Linux/JDSP4Linux/blob/master/src/utils/dbus/manifest.xml.
 
 ## Troubleshooting
 * Your CPU may be too slow to process the audio sample in time; try to disable some effects (especially resource-hungry ones like the convolver)
@@ -350,7 +361,7 @@ sudo wget -O /usr/share/pixmaps/jamesdsp.png https://raw.githubusercontent.com/A
 * [James Fung](https://github.com/james34602) - Developer of the core library ['libjamesdsp'](https://github.com/james34602/JamesDSPManager/tree/master/Main)
 * [yochananmarqos](https://github.com/yochananmarqos) - AUR packages
 * [theAeon](https://github.com/theAeon) - RPM packages
-* PipeWire/Pulse implementation based on [EasyEffects](https://github.com/wwmm/EasyEffects)
+* PipeWire/Pulse implementation based on [EasyEffects](https://github.com/wwmm/EasyEffects) by [Wellington Wallace](https://github.com/wwmm)
 
 ### Translators
 
@@ -362,7 +373,7 @@ sudo wget -O /usr/share/pixmaps/jamesdsp.png https://raw.githubusercontent.com/A
         <br />
         <sub><b>Tim Schneeberger (ThePBone)</b></sub></a>
       <br />
-      <sub><b>6708 words</b></sub>
+      <sub><b>6808 words</b></sub>
     </td>
     <td align="center" valign="top">
       <a href="https://crowdin.com/profile/Kazevic"><img alt="logo" style="width: 64px" src="https://crowdin-static.downloads.crowdin.com/avatar/15680393/medium/4393ae8969da30fc9475409e95e74867.png" />
@@ -384,6 +395,57 @@ sudo wget -O /usr/share/pixmaps/jamesdsp.png https://raw.githubusercontent.com/A
         <sub><b>Gabriel Cabrera Davila (mefsaal)</b></sub></a>
       <br />
       <sub><b>652 words</b></sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://crowdin.com/profile/so1ar"><img alt="logo" style="width: 64px" src="https://i2.wp.com/crowdin.com/images/user-picture.png?ssl=1" />
+        <br />
+        <sub><b>so1ar</b></sub></a>
+      <br />
+      <sub><b>126 words</b></sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://crowdin.com/profile/mariachini"><img alt="logo" style="width: 64px" src="https://crowdin-static.downloads.crowdin.com/avatar/13113640/medium/99ff648dd8f28efebdce9713cee1b9c3.png" />
+        <br />
+        <sub><b>mariachini</b></sub></a>
+      <br />
+      <sub><b>95 words</b></sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://crowdin.com/profile/arifesat"><img alt="logo" style="width: 64px" src="https://crowdin-static.downloads.crowdin.com/avatar/15670651/medium/46177c3d13c90ed767700bb49413107f.jpeg" />
+        <br />
+        <sub><b>Arif Esat Yılmaz (arifesat)</b></sub></a>
+      <br />
+      <sub><b>24 words</b></sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://crowdin.com/profile/andmydignity"><img alt="logo" style="width: 64px" src="https://crowdin-static.downloads.crowdin.com/avatar/15821563/medium/cce9327c6cd8879f307495fab2077633.png" />
+        <br />
+        <sub><b>Semih Aslan (andmydignity)</b></sub></a>
+      <br />
+      <sub><b>15 words</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <a href="https://crowdin.com/profile/deathrobert2010"><img alt="logo" style="width: 64px" src="https://crowdin-static.downloads.crowdin.com/avatar/13559998/medium/429e149d92ed6c461f601e7d30d280df.jpg" />
+        <br />
+        <sub><b>Robert Abreu (deathrobert2010)</b></sub></a>
+      <br />
+      <sub><b>13 words</b></sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://crowdin.com/profile/artemgrebennikov310"><img alt="logo" style="width: 64px" src="https://crowdin-static.downloads.crowdin.com/avatar/13820153/medium/d1565ef34bd253f67a995f1fd3811887.jpg" />
+        <br />
+        <sub><b>Mr.Positiv (artemgrebennikov310)</b></sub></a>
+      <br />
+      <sub><b>4 words</b></sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://crowdin.com/profile/dev_trace"><img alt="logo" style="width: 64px" src="https://crowdin-static.downloads.crowdin.com/avatar/15729737/medium/f515d9ef1eeb393759e7180bc700afc2_default.png" />
+        <br />
+        <sub><b>dev_trace</b></sub></a>
+      <br />
+      <sub><b>2 words</b></sub>
     </td>
   </tr>
 </table><a href="https://crowdin.com/project/jdsp4linux" target="_blank">Translate in Crowdin 🚀</a>

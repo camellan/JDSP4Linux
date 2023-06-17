@@ -12,9 +12,17 @@ TARGET = jamesdsp
 TEMPLATE = app
 
 USE_PULSEAUDIO: DEFINES += USE_PULSEAUDIO
+USE_PORTALS: DEFINES += USE_PORTALS
 NO_CRASH_HANDLER: DEFINES += NO_CRASH_HANDLER
 !unix {
     DEFINES += NO_CRASH_HANDLER
+}
+
+USE_PULSEAUDIO {
+    DEFINES += FLATPAK_APP_ID=\\\"me.timschneeberger.jdsp4linux.pulse\\\"
+}
+else {
+    DEFINES += FLATPAK_APP_ID=\\\"me.timschneeberger.jdsp4linux.pipewire\\\"
 }
 
 DEFINES += APP_VERSION=$$system(git describe --tags --long --always)
@@ -81,11 +89,13 @@ SOURCES += \
     MainWindow.cpp \
     main.cpp \
     utils/AutoStartManager.cpp \
+    utils/CliRemoteController.cpp \
     utils/CrashReportSender.cpp \
     utils/DesktopServices.cpp \
     utils/Log.cpp \
     utils/SingleInstanceMonitor.cpp \
     utils/dbus/ClientProxy.cpp \
+    utils/dbus/IpcHandler.cpp \
     utils/dbus/ServerAdaptor.cpp \
     utils/OverlayMsgProxy.cpp \
     utils/StyleHelper.cpp
@@ -153,13 +163,16 @@ HEADERS += \
     interface/WidgetMarqueeLabel.h \
     MainWindow.h \
     utils/AutoStartManager.h \
+    utils/CliRemoteController.h \
     utils/CrashReportSender.h \
     utils/DebuggerUtils.h \
     utils/DesktopServices.h \
     utils/Log.h \
     utils/SingleInstanceMonitor.h \
     utils/VersionMacros.h \
+    utils/WindowUtils.h \
     utils/dbus/ClientProxy.h \
+    utils/dbus/IpcHandler.h \
     utils/dbus/ServerAdaptor.h \
     utils/FindBinary.h \
     utils/OverlayMsgProxy.h \
@@ -207,7 +220,12 @@ unix {
 
     CONFIG += link_pkgconfig
 
-    PKGCONFIG += glibmm-2.4 giomm-2.4 libarchive
+    PKGCONFIG += libarchive
+    PKGCONFIG += glibmm-2.4 giomm-2.4
+
+    USE_PORTALS {
+        PKGCONFIG += libportal-qt5
+    }
 
     USE_PULSEAUDIO {
         PKGCONFIG += gstreamer-1.0 gstreamer-audio-1.0
