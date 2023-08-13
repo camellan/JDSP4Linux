@@ -116,9 +116,9 @@ typedef struct {
 typedef struct
 {
 	int32_t slot, inuse;
-	int32_t *map;
-	s_str  *m_literal_strings;
-} eel_string_context_state;
+	void **memRegion;
+	char *type;
+} eel_builtin_memRegion;
 #define MAX_CMD_LEN 8192
 #define HISTORY_COUNT 15000
 #include "cpthread.h"
@@ -141,14 +141,7 @@ typedef struct
 } abstractThreads;
 typedef struct
 {
-	uint32_t numberOfThreads;
-	uint32_t threadMap[1024];
-	abstractThreads *codePtrThreadSink[1024];
 	pthread_mutex_t globalLocker;
-	uint32_t numberOfConvolver;
-	uint32_t *convolverMap;
-	uint32_t *convolverType;
-	void **convolverSink;
   const char *(*func_check)(const char *fn_name, void *user); // return error message if not permitted
   void *func_check_user;
   float **varTable_Values;
@@ -182,7 +175,7 @@ typedef struct
   codeHandleType *tmpCodeHandle;
   float ram_state[NSEEL_RAM_ITEMSPERBLOCK];
   void *caller_this;
-  eel_string_context_state *m_string_context;
+  eel_builtin_memRegion *region_context;
   char printfbuf[20000];
 } compileContext;
 void *NSEEL_PProc_RAM(void *data, int32_t data_size, compileContext *ctx);
@@ -246,6 +239,7 @@ opcodeRec *nseel_translate(compileContext *ctx, const char *tmp, size_t tmplen);
 #define __NSEEL_RAMAlloc(pblocks, w) (pblocks + w)
 float * NSEEL_CGEN_CALL __NSEEL_RAM_MemSet(float *blocks,float *dest, float *v, float *lenptr);
 float * NSEEL_CGEN_CALL __NSEEL_RAM_MemCpy(float *blocks,float *dest, float *src, float *lenptr);
+float *dataSectionToRamDisk(void *opaque, size_t len);
 extern float NSEEL_CGEN_CALL nseel_int_rand(float amplitude);
 #ifdef __cplusplus
 }
