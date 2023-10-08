@@ -1,22 +1,38 @@
+#ifdef USE_PULSEAUDIO
+#include <PulseAudioService.h>
+#else
+#include <PipewireAudioService.h>
+#endif
+
+#ifndef HEADLESS
 #include "MainWindow.h"
+#include <QApplication>
+#include <QStyle>
+#include <QScreen>
+#include <QSessionManager>
+#else
+#include <QCoreApplication>
+#include "utils/dbus/IpcHandler.h"
+#endif
+
 #include "config/DspConfig.h"
 #include "utils/CliRemoteController.h"
 #include "utils/FindBinary.h"
 #include "utils/SingleInstanceMonitor.h"
 #include "utils/VersionMacros.h"
 
-#include <QApplication>
+#include <IAudioService.h>
+
 #include <QCommandLineParser>
 #include <QLibraryInfo>
-#include <QScreen>
-#include <QStyle>
 #include <QScopeGuard>
 #include <QTextStream>
-#include <QSessionManager>
 #include <QTranslator>
 
 #include <sys/stat.h>
 #include <sys/time.h>
+
+#include <data/AssetManager.h>
 
 static QTranslator* qtTranslator = nullptr;
 static QTranslator* translator = nullptr;
@@ -75,6 +91,7 @@ bool initCrashHandler(const char* exePath) {
 #endif
 }
 
+#ifndef HEADLESS
 void initTranslator(const QLocale& locale) {
     qtTranslator = new QTranslator(qApp);
     translator = new QTranslator(qApp);
@@ -86,7 +103,7 @@ void initTranslator(const QLocale& locale) {
     QApplication::installTranslator(translator);
 }
 
-MainWindow* initGui(bool launchInTray, bool watchConfig) {
+MainWindow* initGui(IAudioService* audioService, bool launchInTray, bool watchConfig) {
     // Workaround: Block DE's to resurrect multiple instances
     QGuiApplication::setFallbackSessionManagementEnabled(false);
     QObject::connect(qApp, &QGuiApplication::saveStateRequest, qApp, [](QSessionManager &manager){
@@ -108,7 +125,7 @@ MainWindow* initGui(bool launchInTray, bool watchConfig) {
     // Prepare DspConfig based on cmdline argument
     DspConfig::instance(watchConfig);
 
-    auto* window = new MainWindow(launchInTray);
+    auto* window = new MainWindow(audioService, launchInTray);
     QObject::connect(instanceMonitor, &SingleInstanceMonitor::raiseWindow, window, &MainWindow::raiseWindow);
 
     window->setGeometry(
@@ -134,15 +151,50 @@ MainWindow* initGui(bool launchInTray, bool watchConfig) {
 
     return window;
 }
+#endif
+
+IAudioService* initAudioService() {
+    // Prepare audio subsystem
+    IAudioService* service;
+
+    Log::information("============ Initializing audio service ============");
+#ifdef USE_PULSEAUDIO
+    Log::information("Compiled with PulseAudio support.");
+    Log::information("This application flavor does not support PipeWire or its PulseAudio compatibility mode.");
+    Log::information("If you want to use this application with PipeWire, you need to recompile this app with proper support enabled.");
+    Log::information("Refer to the README for more detailed information.");
+    Log::information("");
+    service = new PulseAudioService();
+#else
+    Log::information("Compiled with PipeWire support.");
+    Log::information("This application flavor does not support PulseAudio.");
+    Log::information("If you want to use this application with PulseAudio, you need to recompile this app with proper support enabled.");
+    Log::information("Refer to the README for more detailed information.");
+    Log::information("");
+    Log::debug("Blocklisted apps: " + AppConfig::instance().get<QString>(AppConfig::AudioAppBlocklist) /* explicitly use as QString here */);
+    Log::debug("Blocklist mode: " + QString((AppConfig::instance().get<bool>(AppConfig::AudioAppBlocklistInvert) ? "allow" : "block")));
+    service = new PipewireAudioService();
+#endif
+    QObject::connect(service, &IAudioService::logOutputReceived, [](const QString& msg){ Log::kernel(msg); });
+    QObject::connect(&DspConfig::instance(), &DspConfig::updated, service, &IAudioService::update);
+    QObject::connect(&DspConfig::instance(), &DspConfig::updatedExternally, service, &IAudioService::update);
+
+    return service;
+}
 
 using namespace std;
 int main(int   argc,
          char *argv[])
 {
+    // Locale workaround
+    setlocale(LC_NUMERIC, "C");
+    auto systemLocale = QLocale::system();
+    QLocale::setDefault(QLocale::c());
+
     // Used for some crash handler magic & auto-start setup
-	findyourself_init(argv[0]);
-	char exepath[PATH_MAX];
-	find_yourself(exepath, sizeof(exepath));
+    findyourself_init(argv[0]);
+    char exepath[PATH_MAX];
+    find_yourself(exepath, sizeof(exepath));
     // Ensure temp directory exists
     mkdir("/tmp/jamesdsp/", S_IRWXU);
     // Prepare crash handler if enabled
@@ -151,11 +203,13 @@ int main(int   argc,
     qRegisterMetaType<AppConfig::Key>();
     qRegisterMetaType<DspConfig::Key>();
 
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
-    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
     QScopedPointer<QCoreApplication> app(new QCoreApplication(argc, argv));
-    initTranslator(QLocale::system());
+#ifndef HEADLESS
+    initTranslator(systemLocale);
+#endif
 
     QCoreApplication::setApplicationName("jamesdsp");
     QCoreApplication::setApplicationVersion(APP_VERSION_FULL);
@@ -180,7 +234,7 @@ int main(int   argc,
     QCommandLineOption deletePreset(QStringList() << "delete-preset", "Delete preset by name (Remote)", "name");
     QCommandLineOption listPresets(QStringList() << "list-presets", "List presets (Remote)");
 
-	QCommandLineParser parser;
+    QCommandLineParser parser;
     parser.setApplicationDescription(QObject::tr("JamesDSP is an advanced audio processing engine available for Linux and Android systems."));
     parser.addHelpOption();
     parser.addVersionOption();
@@ -212,13 +266,6 @@ int main(int   argc,
 #ifndef NO_CRASH_HANDLER
     SPIN_ON_CRASH = parser.isSet(spinlck);
 #endif
-
-    // Locale workaround
-    QLocale::setDefault(QLocale::c());
-    if(setlocale(LC_NUMERIC, "en_US.UTF-8") == nullptr)
-    {
-        setlocale(LC_NUMERIC, "C");
-    }
 
     // Prepare logger
     bool minVerbValid = false;
@@ -276,29 +323,52 @@ int main(int   argc,
         return result ? 0 : 1;
     }
     else {
-        // GUI service mode
-        app.reset();
-        app.reset(new QApplication(argc, argv));
-        QString langOverride = parser.value(lang);
-        initTranslator(langOverride.isEmpty() ? QLocale::system() : QLocale(langOverride));
-
-        Log::clear();
-
-        Log::information("Application version: " + QString(APP_VERSION_FULL));
-        Log::information("Qt library version: " + QString(qVersion()));
-        Log::information("Using language: " + QString(QLocale::system().name()));
-        Log::debug("Launched by system session manager: " + QString(qApp->isSessionRestored() ? "yes" : "no")); /* unreliable */
-
-    #ifndef NO_CRASH_HANDLER
+#ifndef NO_CRASH_HANDLER
         if(lastSessionCrashed)
         {
             Log::information("Last session crashed unexpectedly. A crash report has been saved here: " + QString(STACKTRACE_LOG_OLD));
         }
-    #endif
+#endif
 
         AppConfig::instance().set(AppConfig::ExecutablePath, QString::fromLocal8Bit(exepath));
-        initGui(parser.isSet(tray), parser.isSet(watch));
+        Log::clear();
 
-        return QApplication::exec();
+#ifdef HEADLESS
+        QScopedPointer instanceMonitor(new SingleInstanceMonitor(qApp));
+        if(!instanceMonitor->isServiceReady()) {
+            Log::console("Another JamesDSP instance is already active in the background. For information about controlling the active instance, see '--help'.", true);
+            return 1;
+        }
+#endif
+
+        Log::information("Application version: " + QString(APP_VERSION_FULL));
+        Log::information("Qt library version: " + QString(qVersion()));
+
+        IAudioService* audioService = initAudioService();
+
+        // Extract default EEL files if missing
+        {
+            if (AppConfig::instance().get<bool>(AppConfig::LiveprogAutoExtract))
+            {
+                AssetManager::instance().extractAll();
+            }
+        }
+
+#ifdef HEADLESS
+        QScopedPointer ipc(new IpcHandler(audioService));
+        DspConfig::instance().load();
+#else
+        // GUI service mode
+        app.reset();
+        app.reset(new QApplication(argc, argv));
+        QString langOverride = parser.value(lang);
+        initTranslator(langOverride.isEmpty() ? systemLocale : QLocale(langOverride));
+
+        Log::information("Using language: " + QString(QLocale::system().name()));
+        Log::debug("Launched by system session manager: " + QString(qApp->isSessionRestored() ? "yes" : "no")); /* unreliable */
+
+        initGui(audioService, parser.isSet(tray), parser.isSet(watch));
+#endif
+        return QCoreApplication::exec();
     }
 }
